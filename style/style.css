@@ -1,0 +1,30 @@
+html{background: #ffffff;}
+body {font-family: "微软雅黑";}
+h1 {display: none;}
+a{text-decoration: none;}
+ul{list-style: none;}
+.wrap{position: relative;overflow: hidden;padding-top: 145px}
+header{width: 100%;position: fixed;z-index: 9999;background-color:rgba(250,250,250,0.9);top: 0;left: 0;}
+header{background/*\**/:filter:Alpha(opacity=90)\9; background/*\**/:#ffffff\9;/*实现IE背景透明*/  }
+header .inner{width: 960px;position: relative;margin: 0 auto;height: 150px;}
+.logo{float: left;position: relative;}
+header li{float: left;margin-top: 60px;position:relative; }
+header li a{float: left;margin-left: 100px;font-size: 20px;color:#2a394e;}
+header li a:hover{color: #ff6765;}
+#home{position: relative;margin-top:60px;width: 960px;height: 800px;}
+
+section{margin: 0 auto;}
+aside{margin-left: 50px;float: left;width: 240px;}
+.photo{clear:both;margin-left: 13px;margin-bottom:30px;}
+article {float: left;height: 700px;}
+article .intro{width: 580px;color:#2a394e; line-height: 30px;font-size: 16px;}
+article ul{float: left;margin-top: 20px;width: 240px;}
+article a{display: block;height: 80px;background-color: #ff6765;color: #ffffff;}
+article a:hover{background-color:#ffffff;color: #2a394e;border:1px solid #2a394e;}
+h2{padding-top: 5px;text-align: center;}
+article a p{margin-left: 3px;}
+article li{margin-top: 25px;}
+#show{float: left;margin-top: 45px;margin-left: 20px;width: 300px;height: 289px;}
+.gonext{clear: both;width: 960px;height: 50px;text-align: center;color:#ff6765;border-bottom: 1px solid #ff6765;  }
+.line{ border-left: 10px solid transparent; border-right: 10px solid transparent; border-top: 10px solid #ff6765;}
+.triangle-down{margin: 0 auto;margin-top: 8px;width: 0; height: 0;border-left: 10px solid transparent;border-right: 10px solid transparent;border-top: 20px solid #ff6765; }
