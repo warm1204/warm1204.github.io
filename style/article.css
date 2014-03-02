@@ -1,0 +1,5 @@
+body{font-family: "微软雅黑";color: #2a394e}
+h1{text-align: center;line-height: 150px;height: 150px;font-size: 26px;}
+.wrap{width: 960px;margin: 0 auto;}
+em{font-weight: bold;font-size: 18px;display:block;margin: 30px 0 10px 0;}
+p{text-indent: 2em;letter-spacing: 2px;}

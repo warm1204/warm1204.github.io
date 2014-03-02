@@ -57,13 +57,6 @@ window.onload=function(){
     for(var i=0;i<3;i++){
       links[i].onmouseover=function(){
       showNow(this);
-      console.info("这是info");
-
-　　console.debug("这是debug");
-
-　　console.warn("这是warn");
-
-　　console.error("这是error");
       return false;
       };
     };

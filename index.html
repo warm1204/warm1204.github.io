@@ -8,28 +8,29 @@
 		<link rel="stylesheet" href="http://yui.yahooapis.com/3.5.0/build/cssreset/reset-min.css">
 		<link rel="short icon" type="image/x-icon" href="img/icon.ico">
 		<link rel="stylesheet" type="text/css" href="style/style.css">
-		<script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 		<!--[if IE]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 	</head>
 	<body>
-		<div class="wrap">
-			<header class="header">
-				<div class="inner">
-					<h1>anchen 个人网站</h1>
-					<a href="http://anchensite.net" target="_blank" class="logo">
-						<img src="images/icon.png" alt="anchen logo"/>
-					</a>
-					<ul>
-						<li><a href="" class="now">首页</a></li>
-						<li><a href="">作品</a></li>
-						<li><a href="">分享</a></li>
-						<li><a href="">个人信息</a></li>
-					</ul>
-				</div>
-			</header>
+		<div id="wrap">
 			<section id="home">
+				<header class="header">
+					<div class="inner">
+						<h1>anchen 个人网站</h1>
+						<a href="http://anchensite.net" target="_blank" class="logo">
+							<img src="images/icon.png" alt="anchen logo"/>
+						</a>
+						<ul class="nav">
+							<li><a href="#home" class="home cur">首页</a></li>
+							<li><a href="#articles" class="articles">分享</a></li>
+							<li><a href="" class="words">作品</a></li>
+							<li><a href="" class="info">个人信息</a></li>
+						</ul>
+					</div>
+				</header>
+			
 				<aside>
 					<img src="images/photo.jpg" width="150" alt="cartoon photo" height="180" class="photo"/>
 					<img src="images/qr.jpg" width="180" height="180" alt="qr" class="qr"/>
@@ -59,13 +60,36 @@
 					</ul>
 					<img  src="images/show1.jpg"id="show" />
 				</article>
+				
+			</section>
+			<section id="articles">
 				<div class="gonext line">
 				<p>go on</p>
 				<div class="triangle-down"></div>
 				</div>
-			</section>
-			<section id="words">
-				
+				<div class="inner">
+					<aside>
+					<ul>
+						<li><a href="#articles"  id="mynav0" class="nav_on" title="前端分享">前端分享(1)</a></li>
+						<li><a href="#articles" id="mynav1" class="nav_off" title="我的总结">我的总结(1)</a></li>
+						<li><a href="#articles" id="mynav2" class="nav_off" title="走在路上">走在路上(1)</a></li>
+						<li><a href="#articles" id="mynav3" class="nav_off" title="形色感悟">形色感悟(1)</a></li>
+					</ul>
+					</aside>
+					<article>
+					<div id="qh_con0" class="tab_con" >
+						<div class="mod">
+							<h3>（转）15条javascript最佳实现</h3>
+							<p>本文档整理大部分公认的、或者少有争议的JavaScript良好书写规范（Best Practice）。一些显而易见的常识就不再论述（比如要用对象支持识别判断，而不是浏览器识别判断；比如不要嵌套太深）。条目顺序按重要级粗略的从高到低排列...<span><a href="article1.html">more</a></span></p>
+						</div>
+
+					</div>
+					<div id="qh_con1" class="hid tab_con" ></div>
+					<div id="qh_con2" class="hid tab_con" ></div>
+					<div id="qh_con3" class="hid tab_con" ></div>
+
+					</article>
+				</div>
 			</section>
 			<!--<div class="footer-wrap">
 		 	<footer>
@@ -78,6 +102,7 @@
 			</div>-->
 		</div>
 	<script type="text/javascript" src="js/normal.js"></script>
+	<script type="text/javascript" src="js/ecom.js"></script>
 	</body>
 </html>
 
