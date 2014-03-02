@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>anchen website</title>
+		<link rel="stylesheet" href="http://yui.yahooapis.com/3.5.0/build/cssreset/reset-min.css">
+		<link rel="short icon" type="image/x-icon" href="img/icon.ico">
+		<link rel="stylesheet" type="text/css" href="style/article.css">
+		<!--[if IE]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+	</head>
+	<body>
+		<div class="wrap">
+			<h1>（转）15条javascript最佳实现</h1>
+			<p>本文档整理大部分公认的、或者少有争议的JavaScript良好书写规范（Best Practice）。一些显而易见的常识就不再论述（比如要用对象支持识别判断，而不是浏览器识别判断；比如不要嵌套太深）。条目顺序按重要级粗略的从高到低排列。</p>
+			<em>把外部JavaScript文件放在HTML底部</em>
+			<p>我们的目标是相同的：为用户尽可能快地显示内容。当载入一个脚本文件的时候，HTML会停止解析，直到脚本载入完毕。因此，用户可能会长时间对着一个空白的屏幕，看上去什么都没有发生。如果你的JavaScript代码只是增加一些功能（比如按钮的点击动作），那么尽管大胆地把文件引用放在HTML底部吧（就在就在&lt;/body&gt;之前），你会看到明显的速度提升。如果是用于其他目的的脚本文件，则需要慎重地考虑。但无论如何，这毫无疑问是一个非常值得考虑的地方。</p>
+			
+		</div>
+	</body>
+</html>
