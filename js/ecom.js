@@ -1,10 +1,13 @@
 $(function() {
 	var home=$("#home").offset().top;
 	var art=$("#articles").offset().top;
+	var word=$("#words").offset().top;
 	//alert(tops);
 	$(window).scroll(function(){
 		var scroH=$(this).scrollTop();
-		if(scroH>=art){
+		if (scroH>=word) {
+			set_cur(".words");
+		}else if(scroH>=art){
 			set_cur(".articles");
 		}else if(scroH>=home){
 			set_cur(".home");
