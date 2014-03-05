@@ -6,10 +6,10 @@ ul{list-style: none;}
 #wrap{position: relative;}
 header{width: 100%;position: fixed;z-index: 9999;background-color:rgba(250,250,250,0.9);top: 0;left: 0;}
 header{background/*\**/:filter:Alpha(opacity=90)\9; background/*\**/:#ffffff\9;/*实现IE背景透明*/  }
-header .inner{width: 960px;position: relative;margin: 0 auto;height: 150px;}
+header .inner{width: 860px;position: relative;margin: 0 auto;height: 150px;}
 .logo{float: left;position: relative;}
 .nav li{float: left;margin-top: 60px;position:relative; }
-.nav li a{float: left;margin-left: 100px;font-size: 20px;color:#2a394e;}
+.nav li a{float: left;margin-left: 120px;font-size: 20px;color:#2a394e;}
 .nav li a:hover{color: #ff6765;}
 .nav li a.cur{color: #ff6765;}
 #home {position: relative;padding-top: 205px;width: 960px;height:700px;}
@@ -34,18 +34,105 @@ h2{padding-top: 5px;text-align: center;}
 
 #articles{position: relative;width: 960px;height:900px;}
 #articles aside{height: 500px;width: 200px;float: left;}
-#articles .inner{position: absolute;top: 240px;}
+#articles .inner{position: absolute;margin-left: 30px;top: 260px;border: 1px solid #bfbfbf;box-shadow: 0px 5px 5px rgba(0,0,0,0.15);padding: 10px;}
 #articles ul li{text-align: center;height: 50px;line-height: 40px;border-bottom: 1px dashed #2a394e;}
 #articles ul li a{color: #2a394e;;}
 #articles ul li a:hover{color:#ff6765;}
 #articles article{float: left;margin-left: 50px;padding-left:50px;width: 600px;}
 h3{color: #2a394e;;}
-#articles article{border-left: 1px solid#2a394e;height: 500px;}
+#articles article{border-left: 1px solid #bfbfbf;height: 500px;}
 #articles article p{font-size: 0.8em;color: #2a394e;margin:20px 0 30px 20px;letter-spacing: 2px;text-indent:2em;}
 #articles span{clear: left;float: right;}
 #articles span a{color: #2a394e;font-size: 16px;}
 #articles span a:hover{color:#ff6765;}
-.mod{border-bottom: 1px solid #2a394e;margin-top: 20px;}
+.mod{border-bottom: 1px solid #bfbfbf;margin-top: 20px;}
 .hid{display: none;}
 
-#words{position: relative;width: 960px;height:1000px;}
+#words{position: relative;width: 960px;height:1100px;}
+.content{padding-top:220px;height: 800px; width: 940px;margin: 0 auto;}
+.content:before{width: 40px;height: 3px;background-color: #2a394e;left: 49%;position: absolute;display: block; top: 280px;
+    bottom: 36px;
+    content: '';}
+.content:after {
+    width: 3px;
+    background-color: #2a394e;
+    left: 51%;
+    position: absolute;
+    display: block;
+    margin-left: -1px;
+    top: 280px;
+    bottom: 36px;
+    content: '';
+}
+
+.container .grid{width: 394px;display: inline;float: left;margin-left: 53px;margin-right: 13px;}
+.p1_box{position: relative;padding: 1px;margin-bottom: 36px;border:2px solid #ff6765;}
+.p1_box .left{margin-right: 23px;}
+.p1_box a.bot{padding: 22px 0 20px 42px;border: 2px solid #ff6765;display: block;background-color: #ff6765;color: #2a394e;}
+.p1_box a:hover{background-color: #ffffff;}
+.p1_box .right{margin-left: 23px;}
+.p1_box.right:after {
+    top: 126px;
+    left: -12px;
+    width: 0px;
+height: 0px;
+border-style: solid;
+border-width: 10px 12px 10px 0;
+border-color: transparent #ff6360 transparent transparent;
+}
+
+.p1_box.right:before {
+    left: -39px;
+    right: auto;
+    top: 132px;
+}
+
+.p1_box:after {
+    position: absolute;
+    width: 0px;
+    content: '';
+    right: -12px;
+    top: 70px;
+    height: 0px;
+    border-style: solid;
+    border-width: 10px 0 10px 12px;
+    border-color: transparent transparent transparent #ff6360;
+
+}
+
+.p1_box:before {
+    width: 9px;
+    height: 9px;
+    border-radius: 55px;
+    content: '';
+    right: -40px;
+    z-index: 30;
+    position: absolute;
+    display: block;
+    top: 76px;
+    background-color: #ff6360;
+}
+a.round {
+	clear: both;
+    width: 63px;
+    height: 73px;
+    border-radius: 500px;
+    background-color: #2a394e;
+    font-size: 16px;
+    line-height: 15px;
+    text-align: center;
+    display: block;
+    color: #fff;
+    margin: 0 auto;
+    left: 10px;
+    position: relative;
+    z-index: 30;
+    padding-top: 22px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+}
+a.round:hover {
+    background-color: #FF6765; 
+}

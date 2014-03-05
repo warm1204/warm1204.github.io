@@ -18,32 +18,7 @@
 	};
 };*/
 
-	/*window.onload=function(){
-     var home=document.getElementById('home');
-     var aUl=home.getElementsByTagName('ul')[0];
-     var ali=aUl.getElementsByTagName('li');
-     var oDiv=home.getElementsByTagName('div');
-     var timer=null;
-    function show(){
 
-     for(var i=0;i<ali.length;i++){
-          ali[i].index=i;
-          ali[i].onmouseover=oDiv[i].onmouseover=function(){
-               clearTimeout(timer);
-               setTimeout(function(){
-                    oDiv[i].style.display='block';//错误：无效
-
-               },300);
-          };
-          ali[i].onmouseout=oDiv[i].onmouseout=function(){
-            clearTimeout(timer);
-          timer=setTimeout(function(){
-          	oDiv[i].style.display='none';
-          },300);
-   		  };
-    };}
-    show();
-};*/
 
 function showNow(whichone){
   var sourse=whichone.getAttribute("href");
@@ -57,8 +32,13 @@ window.onload=function(){
     for(var i=0;i<3;i++){
       links[i].onmouseover=function(){
       showNow(this);
+      show.style.display="block";
       return false;
       };
     };
+    show.onmouseover=function() {
+      show.style.display="none";
+    };
+  
 };
 
