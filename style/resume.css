@@ -1,4 +1,4 @@
-html, body {background: #ff6765; font-family: 'Lato', helvetica, arial, sans-serif; font-size: 16px; color: #2a394e;overflow: hidden;}
+html, body {background: #ff6765; font-family: 'Lato', helvetica, arial, sans-serif; font-size: 1em; color: #2a394e;}
 
 .clear {clear: both;}
 p {
@@ -122,7 +122,7 @@ section:last-child {
 }
 
 .skill .skill-title {display: block; padding: 5px; font-size: 18px; font-weight: bold; }
-.skill ul {width: 310px; }
+.skill ul {width:19.3em; }
 .skill ul li {width: 5.6em; height: 1.5em; margin-bottom:0.7em; padding: 0 0.5em; background:rgba(42,57,78,0.7);  color: #fff;  line-height: 1.5em;
 	-moz-border-radius: 0.4em;
 	border-radius: 0.4em;
@@ -132,7 +132,7 @@ section:last-child {
 	transition: width .2s ease-in-out;
 }
 .skill ul li:hover {
-	width: 8.7em;
+	width: 7.7em;
 }
 .skill ul li span {cursor: default; }
 
