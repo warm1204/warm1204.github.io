@@ -196,19 +196,9 @@ section:last-child {
 		line-height: .8em;
 		margin-bottom: 4px;
 	}
-	.skill ul {width:16em; }
+	.skill ul {font-size:76% }
 
 
-#skill-html {padding-right: 6em; }
-#skill-css {padding-right: 6em; }
-#skill-jquery {padding-right: 4.2em; }
-#skill-js {padding-right: 4.2em; }
-#skill-seo {padding-right: 2.4em; }
-#skill-ps {padding-right: 5.4em; }
-#skill-ai {padding-right: 4.8em; }
-#skill-flash {padding-right: 3.6em; }
-#skill-c {padding-right: 1.8em; }
-#skill-as {padding-right: 1.2em; }
 
 }
 @-webkit-keyframes reset {
