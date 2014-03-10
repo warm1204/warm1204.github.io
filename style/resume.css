@@ -122,8 +122,8 @@ section:last-child {
 }
 
 .skill .skill-title {display: block; padding: 5px; font-size: 18px; font-weight: bold; }
-.skill ul {width:19.3em; }
-.skill ul li {width: 6.9em; height: 1.5em; margin-bottom:0.7em; padding: 0 0.5em; background:rgba(42,57,78,0.7);  color: #fff;  line-height: 1.5em;
+.skill ul {width:19em; }
+.skill ul li {width: 7.5em; height: 1.5em; margin-bottom:0.7em; padding: 0 0.5em; background:rgba(42,57,78,0.7);  color: #fff;  line-height: 1.5em;
 	-moz-border-radius: 0.4em;
 	border-radius: 0.4em;
 	-webkit-transition: width .2s ease-in-out;
@@ -132,14 +132,14 @@ section:last-child {
 	transition: width .2s ease-in-out;
 }
 .skill ul li:hover {
-	width: 7.7em;
+	width: 9em;
 }
 
 
 #skill-html {padding-right: 10em; }
 #skill-css {padding-right: 10em; }
-#skill-jquery {padding-right: 7em; }
-#skill-js {padding-right: 7em; }
+#skill-jquery {padding-right: 6em; }
+#skill-js {padding-right: 6em; }
 #skill-seo {padding-right: 4em; }
 #skill-ps {padding-right: 9em; }
 #skill-ai {padding-right: 7em; }
