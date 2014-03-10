@@ -1,4 +1,4 @@
-html, body {background: #ff6765; font-family: 'Lato', helvetica, arial, sans-serif; font-size: 1em; color: #2a394e;outline:1px solid blue;}
+html, body {background: #ff6765; font-family: 'Lato', helvetica, arial, sans-serif; font-size: 16px; color: #2a394e;}
 
 .clear {clear: both;}
 p {
@@ -9,7 +9,6 @@ p {
 }
 
 #wrap{
-	outline:1px solid blue;
 	width: 90%;
 	max-width: 800px;
 	background: #f3f3f3;
@@ -137,19 +136,19 @@ section:last-child {
 }
 
 
-#skill-html {padding-right: 10.4em; }
-#skill-css {padding-right: 10.4em; }
-#skill-jquery {padding-right: 7.4em; }
+#skill-html {padding-right: 10em; }
+#skill-css {padding-right: 10em; }
+#skill-jquery {padding-right: 7em; }
 #skill-js {padding-right: 7em; }
-#skill-seo {padding-right: 4.3em; }
-#skill-ps {padding-right: 9.6em; }
-#skill-ai {padding-right: 8.4em; }
-#skill-flash {padding-right: 6.8em; }
-#skill-c {padding-right: 3.5em; }
-#skill-as {padding-right: 3em; }
+#skill-seo {padding-right: 4em; }
+#skill-ps {padding-right: 9em; }
+#skill-ai {padding-right: 7em; }
+#skill-flash {padding-right: 5em; }
+#skill-c {padding-right: 3em; }
+#skill-as {padding-right: 2em; }
 
 @media all and (min-width: 602px) and (max-width: 800px) {
-	#headshot {
+	#headpic {
 		display: none;
 	}
 }
@@ -197,6 +196,20 @@ section:last-child {
 		line-height: .8em;
 		margin-bottom: 4px;
 	}
+	.skill ul {width:16em; }
+
+
+#skill-html {padding-right: 6em; }
+#skill-css {padding-right: 6em; }
+#skill-jquery {padding-right: 4.2em; }
+#skill-js {padding-right: 4.2em; }
+#skill-seo {padding-right: 2.4em; }
+#skill-ps {padding-right: 5.4em; }
+#skill-ai {padding-right: 4.8em; }
+#skill-flash {padding-right: 3.6em; }
+#skill-c {padding-right: 1.8em; }
+#skill-as {padding-right: 1.2em; }
+
 }
 @-webkit-keyframes reset {
 	0% {
