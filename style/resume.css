@@ -1,4 +1,4 @@
-html, body {background: #ff6765; font-family: 'Lato', helvetica, arial, sans-serif; font-size: 16px; color: #2a394e;}
+html, body {background: #ff6765; font-family: 'Lato', helvetica, arial, sans-serif; font-size: 16px; color: #2a394e;overflow: hidden;}
 
 .clear {clear: both;}
 p {
