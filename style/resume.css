@@ -135,7 +135,7 @@ section:last-child {
 .skill ul li:hover {
 	width: 7.7em;
 }
-.skill ul li span {cursor: default; }
+
 
 #skill-html {padding-right: 10.4em; }
 #skill-css {padding-right: 10.4em; }
