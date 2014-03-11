@@ -5,7 +5,7 @@
 })(jQuery);
 	nie.config.copyRight.setWhite();*/
 
-jQuery(document).ready(function($) {
+$(document).ready(function() {
 	var $li=$("#tab ul li");
 	$li.mouseover(function(){
 		$(this).addClass('current')
