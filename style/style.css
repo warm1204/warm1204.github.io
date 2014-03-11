@@ -22,7 +22,7 @@ section{margin: 0 auto;}
 #home article .intro{width: 580px;color:#2a394e; line-height: 30px;font-size: 16px;}
 #home article ul{float: left;margin-top: 20px;width: 240px;}
 #home article a{display: block;height: 80px;background-color: #ff6765;color: #ffffff;}
-#home article a:hover{background-color:#ffffff;color: #2a394e;border:1px solid #2a394e;}
+#home article a:hover{background-color:#ffffff;color: #2a394e;outline:1px solid #2a394e;}
 h2{padding-top: 5px;text-align: center;}
 #home article a p{margin-left: 3px;}
 #home article li{margin-top: 25px;}
