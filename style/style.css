@@ -15,14 +15,38 @@ header .inner{width: 860px;position: relative;margin: 0 auto;height: 150px;}
 #home {position: relative;padding-top: 200px;width: 960px;height:590px;}
 
 section{margin: 0 auto;}
-
+#articles .gonext a ,#words .gonext a{color: #ff6765}
 #home aside{margin-left: 50px;float: left;width: 240px;}
 .photo{clear:both;margin-left: 13px;margin-bottom:30px;}
 #home article {float: left;height: 600px;}
 #home article .intro{width: 580px;color:#2a394e; line-height: 30px;font-size: 16px;}
 #home article ul{float: left;margin-top: 20px;width: 240px;}
-#home article a{display: block;height: 80px;background-color: #ff6765;color: #ffffff;}
+#home article a{display: block;height: 80px;background-color: #ff6765;color: #ffffff;   
+    -webkit-transition:color 0.5s linear , background-color 0.5s linear ;
+    -moz-transition:color 0.5s linear , background-color 0.5s linear ;}
 #home article a:hover{background-color:#ffffff;color: #2a394e;outline:1px solid #2a394e;}
+.web-list-con{
+    /width:300px;
+    height:300px;
+    background:#FFF;
+    position:absolute;
+    z-index:-1;
+    top:400px;
+    right:300px;
+    opacity:0;
+    box-shadow:-1px 0 10px #999;
+    -webkit-transition:opacity 0.6s ease-in-out ,right 0.4s linear;
+    -moz-transition:opacity 0.6s ease-in-out ,right 0.4s linear;
+}
+.web-list-con img {
+    opacity:0.9;
+    width: 300px;
+    height: 300px;
+}
+.web-list li:hover .web-list-con{
+    right:80px;
+    opacity:1;
+}
 h2{padding-top: 5px;text-align: center;}
 #home article a p{margin-left: 3px;}
 #home article li{margin-top: 25px;}
@@ -43,8 +67,8 @@ h3{color: #2a394e;;}
 #articles article{border-left: 1px solid #bfbfbf;height: 500px;}
 #articles article p{font-size: 0.8em;color: #2a394e;margin:20px 0 30px 20px;letter-spacing: 2px;text-indent:2em;}
 #articles span{clear: left;float: right;}
-#articles span a{color: #2a394e;font-size: 16px;}
-#articles span a:hover{color:#ff6765;}
+#articles  a{color: #2a394e;font-size: 16px;}
+#articles  a:hover{color:#ff6765;}
 .mod{border-bottom: 1px solid #bfbfbf;margin-top: 20px;}
 .hid{display: none;}
 

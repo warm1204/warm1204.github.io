@@ -38,33 +38,42 @@
 				<article>
 					<p class="intro">Welcome to my personal website, I began to learn front-end from 2013 , and fall in love with the world of HTML, CSS, and JS . This website design, layout, code is completed by myself, hope to take this platform can share my experience of the learning process, communication is also welcome to contact me.
 					</p>
-					<ul id="navleft">
+					<ul class="web-list">
 						<li>
-							<a href="images/show1.jpg">
-								<h2>My Blog</h2>
-								<p>分享技术文章或记录我的生活点滴</p>
-							</a>
-						</li>
-						<li>
-							<a href="images/show2.jpg">
+							<a href="#">
 								<h2>My Resume</h2>
 								<p>我的简历和联系</p>
 							</a>
+							<div class="web-list-con">
+								<img src="images/show2.jpg">
+							</div>
 						</li>
 						<li>
-							<a href="images/show3.jpg">
-								<h2>About Me</h2>
-								<p>现在我是一个爱前端爱宅爱探究的学生</p>
+							<a href="#">
+								<h2>My Share</h2>
+								<p>分享技术文章或记录我的生活点滴</p>
 							</a>
+							<div class="web-list-con">
+								<img src="images/show1.jpg">
+							</div>
+						</li>
+						
+						<li>
+							<a href="#">
+								<h2>More About</h2>
+								<p>看看我在其他地方的足迹吧</p>
+							</a>
+							<div class="web-list-con">
+								<img src="images/show3.jpg">
+							</div>
 						</li>
 					</ul>
-					<img  src="images/show1.jpg"id="show" />
 				</article>
 				
 			</section>
 			<section id="articles">
 				<div class="gonext line">
-				<p>go on</p>
+				<p><a href="javascript:void(0)" onclick="javascript:scroller('articles', 800)">go on</a></p>
 				<div class="triangleDown"></div>
 				</div>
 				<div class="inner">
@@ -74,26 +83,34 @@
 						<li><a href="#articles" id="mynav1" class="nav_off" title="我的总结">我的总结(0)</a></li>
 						<li><a href="#articles" id="mynav2" class="nav_off" title="走在路上">走在路上(0)</a></li>
 						<li><a href="#articles" id="mynav3" class="nav_off" title="形色感悟">形色感悟(0)</a></li>
+						<li><a href="#articles" id="mynav4" class="nav_off" title="更多分享">更多分享(1)</a></li>
 					</ul>
 					</aside>
 					<article>
 					<div id="qh_con0" class="tab_con" >
 						<div class="mod">
 							<h3>（转）15条javascript最佳实现</h3>
-							<p>本文档整理大部分公认的、或者少有争议的JavaScript良好书写规范（Best Practice）。一些显而易见的常识就不再论述（比如要用对象支持识别判断，而不是浏览器识别判断；比如不要嵌套太深）...<span><a href="article1.html">more</a></span></p>
+							<p>本文档整理大部分公认的、或者少有争议的JavaScript良好书写规范（Best Practice）。一些显而易见的常识就不再论述（比如要用对象支持识别判断，而不是浏览器识别判断；比如不要嵌套太深）...
+								<span><a href="article1.html">more</a></span></p>
 						</div>
 
 					</div>
 					<div id="qh_con1" class="hid tab_con" ></div>
 					<div id="qh_con2" class="hid tab_con" ></div>
 					<div id="qh_con3" class="hid tab_con" ></div>
+					<div id="qh_con4" class="hid tab_con" >
+						<div class="mod">
+							<h3>更多分享，可访问博客</h3>
+							<p><a href="http://anchen1992.lofter.com/">anchen1992.lofter.com</a></p>
+						</div>
+					</div>
 
 					</article>
 				</div>
 			</section>
 			<section id="words">
 				<div class="gonext line">
-				<p>go on</p>
+				<p><a href="javascript:void(0)" onclick="javascript:scroller('words', 800)">go on</a></p>
 				<div class="triangleDown"></div>
 				</div>
 				<div class="content">
@@ -128,14 +145,13 @@
 			<div class="footerWrap">
 		 	<footer>
 				<ul>
-					<li class="weibo"><a href="http://weibo.com/u/2168075482">微博</a></li>
-					<li class="youxiang"><a href="anchen1204@gmail.com">邮箱</a></li>
+					<li class="weibo"><a href="http://weibo.com/u/2168075482" target="_blank">微博</a></li>
+					<li class="youxiang"><a href="mailto:anchen1204@gmail.com" target="_blank">邮箱</a></li>
 				</ul>
 				<p>Copyright ©2014 AnChen</p>
 		 	</footer>
 			</div>
 		</div>
-	<script type="text/javascript" src="js/normal.js"></script>
 	<script type="text/javascript" src="js/ecom.js"></script>
 	<script type="text/javascript" src="js/move.js"></script>
 	</body>
