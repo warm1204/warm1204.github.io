@@ -162,7 +162,8 @@ a.round:hover {
     background-color: #FF6765; 
 }
 
-.footerWrap{background-color: #ff6765;height: 110px;}
+footer{background-color: #ff6765;height: 110px;min-width: 960px;}
+
 footer ul{margin: 0 auto;padding-left: 24px;width: 100px;height: 60px;}
 footer li{float: left;}
 footer a{width: 40px;height: 40px;display: block;text-indent: -9999px;margin-top: 16px;-webkit-transition: margin 0.5s ease-out;  -moz-transition: margin 0.5s ease-out;  -o-transition: margin 0.5s ease-out;background:url(../images/sns.png) no-repeat;}
