@@ -12,7 +12,7 @@ header .inner{width: 860px;position: relative;margin: 0 auto;height: 130px;}
 .nav li a{float: left;margin-left: 120px;font-size: 20px;color:#2a394e;}
 .nav li a:hover{color: #ff6765;}
 .nav li a.cur{color: #ff6765;}
-#home {position: relative;padding-top: 200px;width: 960px;height:590px;}
+#home {position: relative;padding-top: 180px;width: 960px;height:590px;}
 
 section{margin: 0 auto;}
 #articles .gonext a ,#words .gonext a{color: #ff6765}
