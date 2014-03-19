@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>倒计时</title>
+<style>
+	body{color: #ccc}
+	.bg{background: url(images/bg.jpg) no-repeat;width: 440px;height: 550px;margin: 0 auto}
+	.fillIn{width: 310px;margin: 0 auto;position:relative;top: 50px;}
+	.intext{width: 50px}
+	.box{position: relative;top: 100px;}
+	.box a{display:block;width:50px;height: 50px;background-color: #ffffff;color: #000;font-weight:bold;margin:0 auto;line-height: 50px;text-align:center;text-decoration: none; border-radius: 10px 10px 10px 10px;}
+	.box a:hover{box-shadow: 0 5px 20px #ff6567;color: #fef58c;}
+	#target { width: 100%; text-align: center; color: #ccc; font-weight: bold; position: absolute; left: 0; top: 240px; font-family: arial; }
+#target strong { color: #fef58c; }
+
+#date {  display:block;height:50px;width: 100%; text-align: center; color: #fff; font-weight: bold; position: absolute; left: 0; top: 306px; font-family: arial; }
+#day { right: 340px; }
+#hour { right: 236px; }
+#min { right: 102px; }
+#sec { right: 0; }
+</style>
+</head>
+<body>
+	<div class="bg">
+		<div class="fillIn">
+			<span>请输入</span>
+			<input type="text" class="intext" value="2014"/>
+			<span>年</span>
+			<input type="text" class="intext" value="12"/>
+			<span>月</span>
+			<input type="text" class="intext" value="31"/>
+			<span>日</span>
+		</div>
+		<div class="box">
+			 <a href="javascript:;" id="go" class="go">GO</a>
+		</div>
+		<p id="target">
+        现在距离-
+       		 <strong>2014年12月22日</strong>
+        	-还剩：
+   		 </p>
+
+    	<div id="date">
+        	<p id="day">000<span>天</span></p>
+        	<p id="hour">00<span>小时</span></p>
+        	<p id="min">00<span>分钟</span></p>
+        	<p id="sec">00<span>秒</span></p>
+    </div>
+	</div>
+	<script>
+		window.onload=function(){
+			var iday=document.getElementById('day');
+			var ihour=document.getElementById('hour');
+			var imin=document.getElementById('min');
+			var isec=document.getElementById('sec');
+			var inputs=document.getElementsByTagName('input');
+			var inYear=inputs[0];
+			var inMonth=inputs[1];
+			var inDay=inputs[2];
+			var go=document.getElementById('go');
+			var target=document.getElementById('target')
+			var timer=null;
+			go.onclick=function(){
+
+				target.innerHTML="现在距离 -"+"<strong>"+inYear.value+"年"+inMonth.value+"月"+inDay.value+"日"+"</strong>"+" -还剩：";
+				timer=setInterval(updateTime, 1000);
+				updateTime();
+
+
+			}
+			function updateTime(){
+				var dayNow=new Date();
+				var dayEnd=new Date();
+				var iRemain=0;
+				var oday=0;
+				var ohour=0;
+				var omin=0;
+				var osec=0;
+				dayEnd.setFullYear(parseInt(inYear.value));
+				dayEnd.setMonth(parseInt(inMonth.value)-1);
+				dayEnd.setDate(parseInt(inDay.value));
+				dayEnd.setHours(0);
+				dayEnd.setMinutes(0);
+				dayEnd.setSeconds(0);
+				iRemain=(dayEnd.getTime()-dayNow.getTime())/1000;
+				oday=parseInt(iRemain/86400);
+				iRemain%=86400;
+		
+				ohour=parseInt(iRemain/3600);
+				iRemain%=3600;
+		
+				omin=parseInt(iRemain/60);
+				iRemain%=60;
+		
+				osec=iRemain;
+				iday.innerHTML=oday+"<span>天</span>";
+				ihour.innerHTML=ohour+"<span>小时</span>";
+				imin.innerHTML=omin+"<span>分钟</span>";
+				isec.innerHTML=osec+"<span>秒</span>";
+				
+			}
+
+		}
+	</script>
+</body>
+</html>
