@@ -142,10 +142,8 @@ section:last-child {
 #skill-js {padding-right: 6em; }
 #skill-seo {padding-right: 4em; }
 #skill-ps {padding-right: 9em; }
-#skill-ai {padding-right: 7em; }
+#skill-ai {padding-right: 6em; }
 #skill-flash {padding-right: 5em; }
-#skill-c {padding-right: 3em; }
-#skill-as {padding-right: 2em; }
 
 @media all and (min-width: 602px) and (max-width: 800px) {
 	#headpic {
