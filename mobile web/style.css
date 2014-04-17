@@ -1,0 +1,59 @@
+@charset "UTF-8";
+/**
+ * 
+ * @authors Your Name (you@example.org)
+ * @date    2014-04-16 17:25:20
+ * @version $Id$
+ */
+html, body {background: #f3ecdc; font-family: "微软雅黑";font-size:62.5% ;color: #5c5a59;overflow: hidden;}
+header h1{display: none;}
+header img{display: block;margin:0 auto ;margin-top:2.62em ;}
+h2{font-weight: normal;font-size: 5.8em;color: #4b2803;margin:0 auto;margin-top: 1em;width: 80px;}
+section::before , section::after{width: 48em;position: absolute;top: 14em;height: 1px;background-color: #81511c;display: block;content: '';}
+section::before{left: 2em;}
+section::after{right: 2em;}
+section p{font-size: 3.8em;width: 33em;margin:0 auto;margin-top: 1.5em;padding: 0 1em 0 1em;}
+span{font-size: 1.3em;color: #1a0300;}
+form p{width: 20em;}
+input{width:26em; height: 3em;margin-left:1em; border:1px solid #b1b0af;-webkit-border-radius:5px }
+.sec{margin-top: 0.8em}
+.check{width: 2em;height: 2em;margin-left:7em; }
+.choose{width: 40em;margin:0 auto;margin-top: 1em;}
+.choose span{font-size: 3em;position: absolute;line-height: 2em;}
+section img{display: block;margin: 0 auto;margin-top: 4em;}
+footer{width: 18em;margin:0 auto;margin-top: 6em;}
+a{text-decoration: none;font-size: 3em;color: #5c5a59;padding: 1em;}
+
+@media all and (min-width:1024px) and (max-width:1300px){
+	section::before{width:35em; }
+	section::after{width: 35em;}
+}
+@media all and (min-width:768px) and (max-width:1023px){
+	body{font-size: 59%;}
+    section::before{width:25em; top: 13em }
+	section::after{width: 25em;top: 13em }
+
+}
+@media all and (min-width:640px) and (max-width:767px){
+	body{font-size: 58%;}
+    section::before{width:20em;top: 13em  }
+	section::after{width: 20em;top: 13em }
+	section p{width:25em; }
+}
+@media all and (min-width:480px) and (max-width:639px){
+	body{font-size: 57%;}
+    section::before{width:13em;top: 13em }
+	section::after{width: 13em;top: 13em}
+	section p{width:20em; }
+}
+@media all and (max-width:479px ){
+	
+	body{font-size: 55%}
+	img{width: 78%;height: 78%}
+	section::before{width:7em;left: 1em;top: 12em; }
+	section::after{width: 7em;right: 1em;top: 12em;}
+	section p{width:13em;font-size: 3em; }
+	input{width: 16em;}
+	.check{margin-left: 5em;}
+	section img{width: 90%;height: 90%;}
+}

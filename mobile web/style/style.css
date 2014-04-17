@@ -1,0 +1,50 @@
+@charset "UTF-8";
+/**
+ * 
+ * @authors Your Name (you@example.org)
+ * @date    2014-04-16 17:25:20
+ * @version $Id$
+ */
+html, body {background: #f3ecdc; font-family: "微软雅黑";font-size:100% ;color: #5c5a59;overflow: hidden;}
+header{margin-top: 50px;}
+header h1{display: none;}
+img{display: block;margin: 0 auto;}
+h2{font-weight: normal;font-size: 2.2em;color: #4b2803;margin:0 auto;margin-top: 1em;width:2em;}
+section{width:28em;margin: 0 auto;padding:0 1em }
+h2::before , h2::after{position: absolute;top: 5em;height: 1px;background-color: #81511c;display: block;content: '';}
+h2::before{left: 1em;}
+h2::after{right: 0.9em;}
+.intr{font-size: 1.4em;}
+form span{font-size: 1.7em;color: #1a0300;}
+.note{width:26em; height: 3.5em;margin-left:1em; border:1px solid #b1b0af;-webkit-border-radius:5px }
+.check{width: 2em;height: 2em;}
+.choose{width: 19em;margin:0 auto;}
+.choose span{font-size:1.4em;position:relative;line-height: 2.2em;margin-right: 1em;}
+a{text-decoration: none;font-size: 1.5em;color: #5c5a59}
+section a{display: block;margin-top: 2em;
+}
+footer{width: 18em;margin:0 auto;margin-top: 5.5em;}
+footer a{padding: 1em;}
+
+@media all and (min-width:1024px) {
+	h2::before ,h2::after{width: 12em;}
+}
+@media all and (min-width:768px) and (max-width:1023px){
+	h2::before ,h2::after{width: 8.2em;}
+}
+
+
+@media all and (min-width:640px) and (max-width:767px){
+	h2::before ,h2::after{width: 6.5em;}
+}
+@media all and (min-width:480px) and (max-width:639px){
+	h2::before ,h2::after{width: 4.4em;}
+}
+
+@media all and (max-width:479px ){
+	body{font-size: 80%;}
+	img{width: 90%;height: 90%;}
+	h2::before ,h2::after{display: none;}
+	section{width: 20em;}
+
+}
