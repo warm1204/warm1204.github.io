@@ -27,7 +27,7 @@ footer p{text-align: center;}
 footer a{font-size: 1.2em;color: #5c5a59;padding: 20px;}
 
 @media screen and (min-width:640px) { 
-	h2::before ,h2::after{width: 200px;}
+	h2::before ,h2::after{width: 100px;}
 	h2::before{left: 50px;}
 	h2::after{right: 50px;}
  }
