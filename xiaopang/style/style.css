@@ -21,6 +21,24 @@ form span{font-size: 1.2em;color: #1a0300}
 .choose{width: 17em;margin: 0 auto;padding-left: 60px;}
 section{margin-bottom: 4em;}
 section a{background: url(../images/denglu.jpg) no-repeat;background-size: 274.6px 35.3px;display: block;width: 275px;height: 37px;margin: 0 auto;margin-top: 40px;}
+.check{width: 20px;height: 20px}
 footer{position: relative;bottom: 0px;}
 footer p{text-align: center;}
 footer a{font-size: 1.2em;color: #5c5a59;padding: 20px;}
+
+@media screen and (min-device-width:640px) { 
+	h2::before ,h2::after{width: 200px;}
+	h2::before{left: 50px;}
+	h2::after{right: 50px;}
+ }
+
+ @media screen and (min-device-width:640px) { 
+	h2::before ,h2::after{width: 200px;}
+	h2::before{left: 50px;}
+	h2::after{right: 50px;}
+ }
+ @media screen and (min-device-width:1024px) { 
+	h2::before ,h2::after{width: 300px;}
+	h2::before{left: 150px;}
+	h2::after{right: 150px;}
+ }
