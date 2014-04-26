@@ -1,0 +1,60 @@
+@charset "UTF-8";
+/**
+ * 
+ * @authors Your Name (you@example.org)
+ * @date    2014-04-25 09:56:11
+ * @version $Id$
+ */
+ *{margin: 0;padding: 0;}
+ body{background:#f9f9f9 ;font-family: "微软雅黑";}
+ .main{width: 980px;margin: 0 auto;}
+ ul{overflow: hidden;}
+ ul li{list-style: none;}
+ a{text-decoration: none;}
+ header{overflow: hidden;height: 100px;}
+h1{text-indent: -9999px;position: absolute;}
+.logo{float: left;position: relative;top: 20px;}
+nav {overflow: hidden;position: relative;top: 60px;left: 70px;}
+nav ul li{float: left;margin-left: 6px;}
+nav ul li a{color: #565656;display: block;width: 80px;height: 36px;line-height: 36px;text-align: center;}
+.current ,nav ul li a:hover{background: #7897ce;color: #f9f9f9;}
+.show{margin-top: 50px;height: 350px;clear: left;}
+.LunBo ul li {position: absolute;display: none;}
+.LunBo ul li.CurrentPic {
+display: block;
+}
+.LunBo .LunBoNum {position: absolute;top: 430px;margin-left: 20px;background: #e7e6e6;}
+.LunBo .LunBoNum span {height: 20px;
+width: 20px;
+display: block;
+line-height: 20px;
+text-align: center;
+margin: 5px 10px 5px 10px;
+float: left;
+cursor: pointer;
+}
+.LunBo .LunBoNum  .CurrentNum{background: #a0a0a0}
+section{clear: left;}
+h2{font-size: 16px;color: #6e6c6c;font-weight: normal;}
+aside{width: 200px;width: 340px;height: 230px;background: url(../images/asidebg.jpg) no-repeat bottom;float: left;}
+aside img{float: left;}
+aside h2{margin-left: 20px;width: 100px;float: left;}
+.advan{clear: left;position: relative;top: 12px;}
+aside p{font-size: 12px;color: #888888;padding-top: 8px;}
+h2 span{color: #4a6aa6;letter-spacing:1px;margin-left: 10px;}
+article{width: 634px;float: left;}
+article h2{height: 30px;border-bottom: 1px solid #cbcbcb;}
+article p{color: #888888;font-size: 12px;letter-spacing: 2px;text-indent: 25px;margin-top: 18px;line-height: 25px;}
+article p span{float: right;}
+article p span a{color: #32699e;}
+.artnav{margin-top: 30px;}
+.artnav li a {display: block;width: 200px;height: 100px;float: left;margin-left: 10px;}
+.nav1 a{background: url(../images/artnav.jpg);}
+.nav2 a ,.nav3 a{margin:5px 0 0 5px;}
+.nav2 a{background: url(../images/artnav.jpg) 0 -100px;}
+.nav3 a{background: url(../images/artnav.jpg) 0 -200px;}
+footer{background: #3c3c3c;height: 26px;clear: left;font-size: 12px;font-family: "宋体";color: #cbcbcb;}
+footer p{text-align: center;line-height: 26px;}
+#div1 {width:160px; height:280px; background:#CCC; position:absolute; left:-160px;top: 200px;}
+#div1 span {width:20px; height:50px; line-height:20px; text-align:center; left:160px; top:120px; background:#565656; position:absolute;color:#f8f8f8;}
+#div1 p{word-break:break-all;font-size: 12px;text-indent: 20px;margin-top: 10px;}

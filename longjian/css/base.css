@@ -217,3 +217,6 @@ input{background-color: #7b7b7b;border: none;width: 140px;height: 25px;color: #d
 /* =e layout */
 #ncp-l1 ,#ncp-l2{margin-left: -10px;color:#323232;}
 #ncp-l1 a{color:#323232;}
+#div1 {width:160px; height:280px; background:#CCC; position:absolute; left:-160px;top: 200px;z-index: 999;}
+#div1 span {width:20px; height:50px; line-height:20px; text-align:center; left:160px; top:120px; background:#565656; position:absolute;color:#f8f8f8;}
+#div1 p{word-break:break-all;font-size: 12px;text-indent: 20px;margin-top: 10px;color: #565656}

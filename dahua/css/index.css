@@ -54,3 +54,6 @@ a{text-decoration: none;}
 #faqdiv .check{margin-left: 20px;margin-top: 10px;display: inline;float: left;width: 100px;}
 #faqdiv .btn_1 ,#faqdiv .btn_2 {margin-top: 20px;margin-right: 20px;background: url(../images/testbtn.jpg) no-repeat;background-position:0px 0px;float: left;width: 154px;height: 41px;}
 #faqdiv .btn_2 {background-position: 0px -50px;}
+#div1 {width:160px; height:280px; background:#CCC; position:absolute; left:-160px;top: 200px;z-index: 999;}
+#div1 span {width:20px; height:50px; line-height:20px; text-align:center; left:160px; top:120px; background:#565656; position:absolute;color:#f8f8f8;}
+#div1 p{word-break:break-all;font-size: 12px;text-indent: 20px;margin-top: 10px;color: #565656}
