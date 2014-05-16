@@ -1,0 +1,55 @@
+@charset "UTF-8";
+*{margin:0;padding: 0;}
+body{margin:0 auto;padding-top: 10px;}
+ul,ol,li{list-style:none;}
+h1{width: 540px;margin:0 auto;}
+.box{ padding:9px 0 0 11px; width:580px; height:720px; background:#ccc; margin:0 auto; }
+.inbox{ width:580px; height:920px;position:relative;}
+
+.wrapper-result{position: fixed;top: 0;left: 0;width: 100%;height: 100%;background: rgba(0,0,0,0.3);margin:0 auto;z-index: 9999;}
+#result{width: 800px;margin: 0 auto;min-height: 6em;height: auto;border:3px solid #ff6567;border-radius: 2em;margin-top: 15em;background: #ffffff;padding-bottom: 1em;}
+.result-content{padding: 0 1em;font-size: 2em;padding-bottom: -.5em;text-align: center;padding-top: 2em;color: #da4f49;}
+#info{display: none;}
+/*random_box module*/
+#random_box li{ position:absolute; width:70px; overflow:hidden; height:70px; border:3px solid #c7c5ca; background:#fff;}
+#random_box li img{ width:70px; display:block; height:70px;}
+#random_1{ left:0; top:0;}
+#random_2{ left:70px;top:0;}
+#random_3{ left:140px;top:0;}
+#random_4{ left:210px;top:0;}
+#random_5{ left:280px;top:0; }
+#random_6{ left:350px;top:0px;}
+#random_7{ left:420px; top:0px;}
+#random_8{ left:490px; top:0px;}
+#random_9{ left:490px; top:70px;}
+#random_10{ left:490px; top:140px;}
+#random_11{ left:490px; top:210px;}
+#random_12{ left:490px; top:280px;}
+#random_13{ left:490px; top:350px;}
+#random_14{ left:490px; top:420px;}
+#random_15{ left:490px; top:490px;}
+#random_16{ left:490px; top:560px;}
+#random_17{ left:490px; top:630px;}
+#random_18{ left:420px; top:630px;}
+#random_19{ left:350px; top:630px;}
+#random_20{ left:280px; top:630px;}
+#random_21{ left:210px; top:630px;}
+#random_22{ left:140px; top:630px;}
+#random_23{ left:70px; top:630px;}
+#random_24{ left:0px; top:630px;}
+
+#random_25{ left:0px; top:560px;}
+#random_26{ left:0px; top:490px;}
+#random_27{ left:0px; top:420px;}
+#random_28{ left:0px; top:350px;}
+#random_29{ left:0px; top:280px;}
+#random_30{ left:0px; top:210px;}
+#random_31{ left:0px; top:140px;}
+#random_32{ left:0px; top:70px;}
+#random_box li.random_current{border:1px solid red;}
+/*random module end*/
+
+.tool-button{margin:0 auto;position: absolute;text-align: center;top: 250px;width: 570px;}
+#username{border-radius: 1em;border:2px solid #ccc;font-size: 30px;height: 36px;line-height: 36px;padding: 8px 0.5em;width: 7em;}
+.ok{width: 100px;height: 3em;line-height: 3em;background: #ff6567;border-radius: 1em;color: #fff;margin:0 auto;margin-top: 2em;}
+
