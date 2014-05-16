@@ -72,6 +72,13 @@ function Star(num){
       var username=$('#username').val();
        $('.result-content').html("'"+username+"'"+result_text);
       $('.wrapper-result').show();
+      $(document).click(function(){
+          $('.wrapper-result').hide();
+     
+      });
+
+
+
    }
    $("#random_"+index).addClass('random_current'); //设置当前选中样式
    if(index>1)
