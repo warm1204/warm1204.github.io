@@ -8,7 +8,7 @@ h1{width: 540px;margin:0 auto;}
 
 .wrapper-result{position: fixed;top: 0;left: 0;width: 100%;height: 100%;background: rgba(0,0,0,0.3);margin:0 auto;z-index: 9999;}
 #result{width:500px;margin: 0 auto;min-height: 6em;height: auto;border:3px solid #ff6567;border-radius: 2em;margin-top: 15em;background: #ffffff;padding-bottom: 1em;}
-.result-content{padding: 0 1em;font-size: 2em;padding-bottom: -.5em;text-align: center;padding-top: 2em;color: #da4f49;}
+.result-content{padding: 0 1em;font-size: 2em;padding-bottom: 0.5em;text-align: center;padding-top: 2em;color: #da4f49;}
 #info{display: none;}
 /*random_box module*/
 #random_box li{ position:absolute; width:70px; overflow:hidden; height:70px; border:3px solid #c7c5ca; background:#fff;}
