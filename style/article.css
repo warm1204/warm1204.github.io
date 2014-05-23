@@ -9,6 +9,7 @@ p{text-indent: 2em;letter-spacing: 2px;}
 .gonext{margin: 50px 0 20px 0;height:40px;text-align: center;color:#ff6765;border-bottom: 1px solid #ff6765;  }
 .line{ border-left: 10px solid transparent; border-right: 10px solid transparent; border-top: 10px solid #ff6765;}
 p a{text-decoration: none;font-family: "微软雅黑";color: #ff6765;line-height: 40px;}
+p span{padding: 0 15px;}
 
 #backToTop{ position:fixed; _position:absolute; bottom:50px; right:0; z-index:999999; display:none; }
 a.backToTop_a{  background:url(../images/top1.png) no-repeat; width:68px; height:79px; display:block; }

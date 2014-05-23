@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>anchen website</title>
+		<link rel="stylesheet" href="http://yui.yahooapis.com/3.5.0/build/cssreset/reset-min.css">
+		<link rel="short icon" type="image/x-icon" href="images/icon.ico">
+		<link rel="stylesheet" type="text/css" href="style/article.css">
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+		<!--[if IE]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+	</head>
+	<body>
+		<div class="wrap">
+			<h1>个人收藏网站分享</h1>
+			<p>在我的收藏夹里会有一些“每日一逛”的网站，就是经常性的上去看看学习。前端发展很快，经常会有很多新的名词新的只是知识，想做一个不落后的互联网人一定要保持一颗猎奇的心。以下没有完全列出，仅作代表，毕竟其实很多网站都挺类同，自己选择一些顺眼的固定去浏览其他的偶尔去浏览就可以啦。还有邮件订阅和rss也是很好的途径哦。</p>
+			<em>以下为国内前端篇</em>
+			<p>
+				<span><a href="http://www.w3school.com.cn/">w3cschool</a></span>
+				<span><a href="http://www.w3cfuns.com/">w3cfun</a></span>
+			 	<span><a href="http://www.html-js.com/">前端乱炖</a></span>
+				<span><a href="http://www.qianduan.net/">前端观察</a></span>
+				<span><a href="http://www.css88.com/">WEB前端开发</a></span>
+			</p>
+			<p><span>还不够？那直接点这个吧-><a href="http://www.whycss.com/">前端导航</a></span></p>
+			<em>以下为国外篇</em>
+			<p>
+				<span><a href="http://thecodeplayer.com/">Learn HTML5,CSS3,JS and more</a>(可以看到完整的代码输入过程哦超酷炫）</span></p>
+				<p><span><a href="http://www.html5rocks.com/en/">html5 ROCK</a></span><span><a href="http://tutorialzine.com/category/tutorials/">Tutorialzine</a></span></p>
+				<p><span>最后看这些外文的网站像博主这种英文不断学习中的肯定也要一边打开这个不用客气-><a href="http://fanyi.youdao.com/">fanyi</a></span></p>
+			<em>框架/API等学习文档篇</em>
+			<p>此处省略一万字......自行根据需要google或百度即可</p>
+			<em>设计篇</em>
+			<p>不喜欢设计的交互设计师不是好前端</p>
+			<p><span><a href="http://www.zcool.com.cn/">站酷</a></span>
+			<span><a href="http://shijue.me/home">视觉中国</a></span>
+			<span><a href="http://www.uisdc.com/">优设</a></span>
+			<span><a href="https://dribbble.com/">Dribbble</a></span>
+			<span><a href="http://www.behance.net/">Behance</a></span>
+			</p>
+			<p><span>还有据说设计师桌面的-><a href="http://hao.uisdc.com/">设计导航</a></span></p>
+			<em>个人爱好篇</em>
+			<p>以下为其他有趣的网站哦，不过可能不是很大众，大众的那些就不列啦</p>
+			<p><span><a href="http://www.luoo.net/">落网音乐</a>（每期都会有很多很棒的音乐主题）</span>
+				<span><a href="http://10years.me/user">十年后</a>（记录梦想的过程）</span></p>
+			<p><span><a href="http://ear.duomi.com/">邻居的耳朵</a></span>
+				<span><a href="http://pianke.me/">片刻</a></span>
+			</p>
+
+			<div class="gonext line">
+				<p><a href="index.html" title="index">返回首页</a></p>
+			</div>
+		</div>
+		<div id="backToTop">
+			<a href="javascript:;" onfocus="this.blur();" class="backToTop_a png"></a>
+		</div>
+		<script >
+		$(function(){
+	$('#backToTop').live('click',function(){
+		var _this=$(this);
+		$('html ,body').animate({scrollTop:0},500,function(){
+			_this.hide();
+		});
+	});
+	$(window).scroll(function(){
+		var htmlTop=$(document).scrollTop();
+		if(htmlTop>0){
+			$('#backToTop').show();
+		}else{
+			$('#backToTop').hide();
+		}
+	});
+});
+		</script>
+	</body>
+</html>
