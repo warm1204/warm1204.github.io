@@ -46,7 +46,7 @@ h1{width: 510px;margin:0 auto;}
 #random_30{ left:0px; top:219px;}
 #random_31{ left:0px; top:146px;}
 #random_32{ left:0px; top:73px;}
-#random_box li.random_current{border:1px solid red;}
+#random_box li.random_current{border:2px solid red;}
 /*random module end*/
 
 .tool-button{margin:0 auto;position: absolute;text-align: center;top: 250px;width: 570px;}
