@@ -68,7 +68,7 @@ function Star(num){
        $('.pic').html('<img src="images/'+index+'.jpg">');
       $('.wrapper-result').show();
       $(document).click(function(){
-          $('.wrapper-result').hide();//点其他区域取消结果重新开始
+          $('.wrapper-result').hide();
      
       });
 
