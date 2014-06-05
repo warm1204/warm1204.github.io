@@ -10,6 +10,7 @@ h1{width: 510px;margin:0 auto;}
 #result{width:500px;margin: 0 auto;min-height: 6em;height: auto;border:3px solid #ff6567;border-radius: 2em;margin-top: 31em;background: #ffffff;padding-bottom: 1em;}
 .result-content{padding: 0 1em;font-size: 1.5em;padding-bottom: 0.5em;padding-bottom: 1.5em;text-align: center;padding-top: 2em;color: #da4f49;}
 #info{display: none;}
+
 /*random_box module*/
 #random_box li{ position:absolute; width:73px; overflow:hidden; height:73px; }
 #random_box li img{ width:70px; display:block; height:70px;}
@@ -37,7 +38,6 @@ h1{width: 510px;margin:0 auto;}
 #random_22{ left:146px; top:657px;}
 #random_23{ left:73px; top:657px;}
 #random_24{ left:0px; top:657px;}
-
 #random_25{ left:0px; top:584px;}
 #random_26{ left:0px; top:511px;}
 #random_27{ left:0px; top:438px;}
@@ -51,6 +51,6 @@ h1{width: 510px;margin:0 auto;}
 
 .tool-button{margin:0 auto;position: absolute;text-align: center;top: 450px;width: 580px;}
 #username{border-radius: 1em;border:2px solid #ccc;font-size: 30px;height: 36px;line-height: 36px;padding: 8px 0.5em;width: 7em;}
-.ok{width: 100px;height: 3.5em;line-height: 3.5em;background: #ff6567;border-radius: 1em;color: #fff;margin:0 auto;margin-top: 2em;}
+.ok{width: 150px;height: 4em;line-height:4em;background: #ff6567;border-radius: 1em;color: #fff;margin:0 auto;margin-top: 2em;}
 
 .pic{position: absolute;width: 274px;height: 254px;left: 10em;top: 8em;}
