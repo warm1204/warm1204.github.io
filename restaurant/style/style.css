@@ -32,7 +32,7 @@ nav{height: 57px;width: 1000px;margin: 0 auto;position: relative;}
 */
 .banner{height:450px;overflow:hidden;border-bottom: 4px solid #cf2135;}
 .banner .d1{width:100%;min-width: 1000px;height:450px;display:block;left:0px;top:110px;}
-.banner .d2{width:78px;height:22px;clear:both;position:absolute;z-index:4;left:650px;top: 500px}
+.banner .d2{width:78px;height:22px;clear:both;position:absolute;z-index:4;left:50%;top: 500px}
 .banner .d2 li{padding:0 4px;;overflow:hidden;cursor:pointer;float:left;margin:0 3px;display:inline;}
 .banner .d2 li.nuw{background:#ffffff;}
 .banner img{max-width: 1600px;margin: 0 auto}
