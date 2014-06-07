@@ -1,0 +1,64 @@
+@charset "UTF-8";
+/**
+ * 
+ * @authors Anchen (you@example.org)
+ * @date    2014-06-02 17:41:46
+ * @version $Id$
+ */
+
+/*restauranth.html*/
+.resintro{background: url(../images/bg.jpg) repeat;}
+.resmain{width: 960px;height: 500px;margin: 0 auto;padding-top: 40px;}
+.banner{background: url(../images/bannerbg.jpg) repeat-x;width: 100%;min-width: 1000px;}
+.banner .d1{margin: 0 auto;width: 960px;}
+.banner  .d1{position: relative;top: 0}
+.spr{background: url(../images/icon-btn.png) no-repeat;padding: 0 30px;line-height: 25px;}
+.n1 ,.n2{font-size: 16px;color: #cf2135;}
+.resintro p{font-size: 16px;color: #6c6c6c;width: 960px;line-height: 26px;margin-top: 20px;}
+.n2{background-position: 0 -25px;}
+.addr {width: 280px;float: left;margin-top: 60px;}
+.addr p{width: 280px;}
+.map{float: left;margin-top: 30px;margin-left: 30px;border: 2px solid #cf2135;}
+.n3 ,.n4{background-position: 0 -50px;display: inline-block;height: 48px;width: 145px;clear: left;float: right;margin-top: 30px;} 
+.n4{background-position: 0 -100px;}
+
+/*res-env.html*/
+.res-env{height: 180px;width: 960px;margin: 0 auto;padding-top: 40px;}
+
+
+
+/*contact.html*/
+.con-main{background: url(../images/contactbg.jpg) no-repeat center;width: 100%;min-width: 1000px;height: 700px;margin: 0 auto;}
+
+.tuangoulogo{display: block;width: 840px;height: 71px;margin: 0 auto;position: relative;top: 60px; }
+.tuangouinter{width: 880px;margin: 0 auto;margin-top: 100px;}
+.spr2{background: url(../images/tuangouicon.png) no-repeat;display: block;width: 140px;height: 140px;}
+.tuangouinter p{clear: both;color: #f7f7f7;font-size: 20px;}
+.tuan{width: 140px;margin-left: 120px;float: left;text-align: center;font-size: 20px;color: #f7f7f7}
+.contactway {clear: both;width: 510px;margin: 0 auto;position: relative;top: 40px;font-size: 14px;color: #ffffff;}
+.contactway  span {margin-left: 30px;}
+.email a{color:#ffffff; }
+.sns{position: relative;width: 450px;margin: 0 auto;top: 50px;}
+.sns a{font-size: 14px;color: #ffffff;}
+.qr{display: block;margin: 0 auto;margin-top: 90px;}
+
+
+/*product.html*/
+.probanner{background: url(../images/productbg.jpg) ;width: 100%;min-width: 1000px;height: 360px;}
+.probanner .d1{position: absolute;width: 680px;min-width:680px;height: 240px;}
+.prointr{position: relative;top: 100px;left:400px;width: 240px;color: #ffffff;font-size: 15px;line-height: 25px;text-indent: 2em;}
+.probanner .d2{left: 200px;top: 260px;}
+.bannermain{position: relative;height: 304px;width: 680px;margin: 0 auto;top: 60px;}
+.golook{display: block;background: url(../images/proicon.png)  no-repeat;width: 132px;height: 43px;position: absolute;left: 480px;top: 200px;z-index: 4;}
+.promain{margin-left: 50px;width: 960px;margin: 0 auto;padding-top: 40px;padding-bottom: 40px;}
+.proicon{background: url(../images/proicon.png) 0 -50px no-repeat;padding:0 30px;line-height: 25px;color: #cf2135;}
+.tab_menu{height: 50px;border: 2px solid #c92034;border-top:4px solid #c92034;font-size: 15px;}
+.tab{margin-top:16px;}
+.tab_menu li{float: left;cursor: pointer;width: 140px;height: 37px;color: #777777;text-align: center;padding-top: 15px;}
+.tab_menu .selected{background: #d74d5d;color: #ffffff;}
+.one,.two ,.three,.four{overflow: hidden;padding-bottom: 20px;border-left: 1px solid #c92034;border-right: 1px solid #c92034;border-bottom: 2px solid #c92034;}
+.two ,.three,.four{display: none;}
+.fh{padding-left: 40px;}
+.resintro .foodmenu{width: 420px;float: left;padding-left: 40px;}
+.price{float: right;}
+
