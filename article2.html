@@ -114,7 +114,7 @@
 		</div>
 		<script >
 		$(function(){
-	$('#backToTop').live('click',function(){
+	$('#backToTop').on('click',function(){
 		var _this=$(this);
 		$('html ,body').animate({scrollTop:0},500,function(){
 			_this.hide();
