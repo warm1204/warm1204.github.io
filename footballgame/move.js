@@ -1,3 +1,8 @@
+/**
+ * 
+ * @authors Anchen
+ * @version $v2$
+ */
 
 var index=1,           //当前亮区位置
 prevIndex=32,          //前一位置
