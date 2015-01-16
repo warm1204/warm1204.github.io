@@ -1,7 +1,7 @@
  function intval(v){
                 v = parseInt(v);
                 return isNaN(v) ? 0 : v;
-            } // ?取元素信息    
+            }    
             function getPos(e){
                 var l = 0;
                 var t = 0;
@@ -24,7 +24,7 @@
                     wb: wb,
                     hb: hb
                 };
-            } // ?取??条信息    
+            }    
             function getScroll(){
                 var t, l, w, h;
                 if (document.documentElement && document.documentElement.scrollTop) {
@@ -46,7 +46,7 @@
                     w: w,
                     h: h
                 };
-            } // ?点(Anchor)?平滑跳?    
+            }     
             function scroller(el, duration){
                 if (typeof el != 'object') {
                     el = document.getElementById(el);
