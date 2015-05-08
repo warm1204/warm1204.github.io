@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html><head>
+<link rel="apple-touch-icon" href="icon.png">
+<link rel="shortcut icon" href="icon.png">
+<link rel="icon" href="icon.png">
+<title>宠物派对 - Pet Party Columns</title>
+<meta name="keywords" content="宠物派对,宠物派对html5游戏">
+<meta name="description" content="宠物派对html5游戏,宠物派对手机在线游戏">
+<link rel="stylesheet" href="css/reset.css" type="text/css">
+<link rel="stylesheet" href="css/main.css" type="text/css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="msapplication-tap-highlight" content="no">
+<script type="text/javascript" src="js/jquery-2.0.3.min.js"></script>
+<script type="text/javascript" src="js/createjs-2013.12.12.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+</head>
+<body ondragstart="return false;" ondrop="return false;">
+<script>
+$(document).ready(function(){
+var oMain = new CMain();
+$(oMain).on("game_start", function(evt) {
+//alert("game_start");
+});
+$(oMain).on("save_score", function(evt,score) {
+//alert("save_score: "+score);
+});
+$(oMain).on("restart", function(evt) {
+//alert("restart");
+});
+});
+</script>
+<canvas id="canvas" class="ani_hack" width="768" height="1024" style="width: 320px; height: 426.666666666667px; left: 0px;"> </canvas>
+<script src="../js/stat.js"></script>
+
+
+</body></html>
