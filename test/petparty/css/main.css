@@ -11,10 +11,7 @@ root {
 }
 
 body{
-    background-color: #1a7900;
-    background-repeat: repeat-x;
-    background-position: top;
-    background-image: url(../sprites/bg_tile.jpg);    
+    background-color: #ffffff;
 }
 
 * {
@@ -29,8 +26,8 @@ body{
 ::-moz-selection { background: transparent;color:inherit; }
 
 #canvas{
-    width:768px;
-    height: 1024px;
+    width:640px;
+    height: 960px;
     
     position: absolute;
     

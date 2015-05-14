@@ -31,7 +31,7 @@ function CSpriteLibrary() {
         return c
     }
 }
-var CANVAS_WIDTH = 768, CANVAS_HEIGHT = 1024, DISABLE_SOUND_MOBILE = !0, FPS_TIME = 1E3 / 24, STATE_LOADING = 0, STATE_MENU = 1, STATE_HELP = 1, STATE_GAME = 3, ON_MOUSE_DOWN = 0, ON_MOUSE_UP = 1, ON_MOUSE_OVER = 2, ON_MOUSE_OUT = 3, ON_DRAG_START = 4, ON_DRAG_END = 5, GRID_COLS, GRID_ROWS, GRID_SIZE, GRID_OFFSET_X, GRID_OFFSET_Y, TIME_SHOW_NEW_BLOCK, NUM_COLORS, BLOCK_SPEED, BLOCK_DOWN_SPEED, BLOCK_EMPTY = 0, BLOCK_LINE = 3, STATE_MOVE = 1, STATE_LINE = 2, STATE_FALL = 3, NUM_LIVES = 3, BUT_LEFT_X = 40, BUT_LEFT_Y = 400, BUT_RIGHT_X = 280, BUT_RIGHT_Y = 400;
+var CANVAS_WIDTH = 640, CANVAS_HEIGHT = 960, DISABLE_SOUND_MOBILE = !0, FPS_TIME = 1E3 / 24, STATE_LOADING = 0, STATE_MENU = 1, STATE_HELP = 1, STATE_GAME = 3, ON_MOUSE_DOWN = 0, ON_MOUSE_UP = 1, ON_MOUSE_OVER = 2, ON_MOUSE_OUT = 3, ON_DRAG_START = 4, ON_DRAG_END = 5, GRID_COLS, GRID_ROWS, GRID_SIZE, GRID_OFFSET_X, GRID_OFFSET_Y, TIME_SHOW_NEW_BLOCK, NUM_COLORS, BLOCK_SPEED, BLOCK_DOWN_SPEED, BLOCK_EMPTY = 0, BLOCK_LINE = 3, STATE_MOVE = 1, STATE_LINE = 2, STATE_FALL = 3, NUM_LIVES = 3, BUT_LEFT_X = 40, BUT_LEFT_Y = 400, BUT_RIGHT_X = 280, BUT_RIGHT_Y = 400;
 function CToggle(a, c, b) {
     var d, h, g;
     this._init = function(a, c, b) {
@@ -226,7 +226,7 @@ function CPreloader() {
     };
     this._onAllPreloaderImagesLoaded = function() {
         a = new createjs.Text("", "bold 42px Arial center", "#ffffff");
-        a.x = CANVAS_WIDTH / 2 - 40;
+        a.x = CANVAS_WIDTH / 2 - 80;
         a.y = CANVAS_HEIGHT / 2;
         s_oStage.addChild(a)
     };
@@ -244,11 +244,9 @@ function CMenu() {
         a = new createjs.Bitmap(s_oSpriteLibrary.getSprite("bg_menu"));
         s_oStage.addChild(a);
         var h = s_oSpriteLibrary.getSprite("but_play");
-        c = new CTextButton(CANVAS_WIDTH / 2, CANVAS_HEIGHT - 100, h, TEXT_PLAY, "Arial", "#ffffff", 40);
+        c = new CTextButton(CANVAS_WIDTH / 2, CANVAS_HEIGHT - 200, h, TEXT_PLAY, "Arial", "#ffffff", 40);
         c.addEventListener(ON_MOUSE_UP, this._onButPlayRelease, this);
-        if (!1 === DISABLE_SOUND_MOBILE || !1 === s_bMobile)
-            b = new CToggle(CANVAS_WIDTH - h.width / 4, 10 + h.height / 2, s_oSpriteLibrary.getSprite("audio_icon")), b.addEventListener(ON_MOUSE_UP, this._onAudioToggle, 
-            this);
+      
         d = new createjs.Shape;
         d.graphics.beginFill("black").drawRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
         s_oStage.addChild(d);
@@ -267,9 +265,7 @@ function CMenu() {
         this.unload();
         s_oMain.gotoGame()
     };
-    this._onAudioToggle = function() {
-        createjs.Sound.setMute(!s_bAudioActive)
-    };
+   
     this._init()
 }
 function CMain() {
@@ -281,15 +277,10 @@ function CMain() {
         s_bMobile = jQuery.browser.mobile;
         s_iPrevTime = (new Date).getTime();
         createjs.Ticker.addEventListener("tick", this._update);
-        !1 !== DISABLE_SOUND_MOBILE && !1 !== s_bMobile || this._initSounds();
+       
         s_oSpriteLibrary = new CSpriteLibrary;
         d = new CPreloader;
         this._loadImages()
-    };
-    this._initSounds = function() {
-        createjs.Sound.initializeDefaultPlugins() && 
-        (0 < navigator.userAgent.indexOf("Opera") || 0 < navigator.userAgent.indexOf("OPR") ? (createjs.Sound.alternateExtensions = ["mp3"], createjs.Sound.addEventListener("fileload", createjs.proxy(this.handleFileLoad, this)), createjs.Sound.registerSound("./sounds/soundtrack.ogg", "soundtrack"), createjs.Sound.registerSound("./sounds/move.ogg", "move"), createjs.Sound.registerSound("./sounds/explosion.ogg", "explosion")) : (createjs.Sound.alternateExtensions = ["ogg"], createjs.Sound.addEventListener("fileload", createjs.proxy(this.handleFileLoad, 
-        this)), createjs.Sound.registerSound("./sounds/soundtrack.mp3", "soundtrack"), createjs.Sound.registerSound("./sounds/move.mp3", "move"), createjs.Sound.registerSound("./sounds/explosion.mp3", "explosion")), c += 3)
     };
     this._loadImages = function() {
         s_oSpriteLibrary.init(this._onImagesLoaded, this._onAllImagesLoaded, this);
@@ -311,12 +302,12 @@ function CMain() {
     };
     this.handleFileLoad = function(b) {
         a++;
-        a === c && (d.unload(), !1 !== DISABLE_SOUND_MOBILE && !1 !== s_bMobile || createjs.Sound.play("soundtrack", {loop: -1,volume: .5}), this.gotoMenu())
+        a === c && (d.unload(),  this.gotoMenu())
     };
     this._onImagesLoaded = function() {
         a++;
         d.refreshLoader(Math.floor(a / c * 100));
-        a === c && (d.unload(), !1 !== DISABLE_SOUND_MOBILE && !1 !== s_bMobile || createjs.Sound.play("soundtrack", {loop: -1,volume: .5}), this.gotoMenu())
+        a === c && (d.unload(),  this.gotoMenu())
     };
     this._onAllImagesLoaded = function() {
     };
@@ -329,7 +320,7 @@ function CMain() {
         b = STATE_MENU
     };
     this.gotoGame = function() {
-        h = new CGame({rows: 13,cols: 8,cell_size: 67,offset_x: 67,offset_y: 2,time_show_block: 1E3,num_colors: 6,speed: 2,speed_down: 8});
+         h = new CGame({rows: 10,cols: 7,cell_size:67,offset_x: 0,offset_y: 2,time_show_block: 1E3,num_colors: 5,speed: 2,speed_down: 8});//格子的大小位置设定
         b = STATE_GAME;
         $(s_oMain).trigger("game_start")
     };
@@ -356,7 +347,7 @@ TEXT_PLAY = "PLAY";
 TEXT_SCORE = "SCORE";
 TEXT_GAME_OVER = "GAME OVER";
 TEXT_NEXT = "NEXT";
-TEXT_HELP = "MATCH 3 OR MORE \nSIMILAR ELEMENTS,\n USING ARROW KEYS \nOR BUTTONS";
+TEXT_HELP = "游戏玩法";
 function CInterface(a) {
     var c = CANVAS_WIDTH - 100, b = 260 + 2 * GRID_SIZE, d = CANVAS_WIDTH - 100, h = 260 + GRID_SIZE, g = CANVAS_WIDTH - 100, e = CANVAS_HEIGHT - 60, s = CANVAS_HEIGHT - 60, v = CANVAS_HEIGHT - 60, k = CANVAS_HEIGHT - 60, p, q, r, u, A, t, f, w, x, y, z, l, m, B;
     this._init = function(a) {
@@ -376,32 +367,30 @@ function CInterface(a) {
         s_oStage.addChild(q);
         s_oStage.addChild(r);
         a = s_oSpriteLibrary.getSprite("but_left");
-        A = new CGfxButton(60, e, a, !0);
+        A = new CGfxButton(400, e-100, a, !0);
         A.addEventListener(ON_MOUSE_UP, this._onReleaseLeft, this);
         a = s_oSpriteLibrary.getSprite("but_right");
-        t = new CGfxButton(700, s, a, !0);
+        t = new CGfxButton(550, s-100, a, !0);
         t.addEventListener(ON_MOUSE_UP, this._onReleaseRight, this);
         a = s_oSpriteLibrary.getSprite("but_down");
-        w = new CGfxButton(580, v, a, !0);
+        w = new CGfxButton(480, v-20, a, !0);
         w.addEventListener(ON_MOUSE_UP, this._onReleaseButDown, this);
         a = s_oSpriteLibrary.getSprite("but_up");
-        f = new CGfxButton(180, k, a, !0);
+        f = new CGfxButton(60, k-100, a, !0);
         f.addEventListener(ON_MOUSE_UP, this._onReleaseButUp, this);
-        a = s_oSpriteLibrary.getSprite("but_exit");
-        u = new CGfxButton(CANVAS_WIDTH - a.width / 2 - 10, 10 + a.height / 2, a, !0);
-        u.addEventListener(ON_MOUSE_UP, this._onExit, this);
-        if (!1 === DISABLE_SOUND_MOBILE || !1 === s_bMobile)
-            x = new CToggle(CANVAS_WIDTH - a.width / 2 - 10, 180, s_oSpriteLibrary.getSprite("audio_icon")), x.addEventListener(ON_MOUSE_UP, this._onAudioToggle, this);
+       // a = s_oSpriteLibrary.getSprite("but_exit");
+       // u = new CGfxButton(CANVAS_WIDTH - a.width / 2 - 10, 10 + a.height / 2, a, !0);
+       // u.addEventListener(ON_MOUSE_UP, this._onExit, this);
+     
         y = new createjs.Text("0 PT", "bold 40px Arial", "#000000");
         y.textAlign = "center";
-        y.x = CANVAS_WIDTH / 2 + 1;
-        y.y = CANVAS_HEIGHT - 70;
+        y.x = CANVAS_WIDTH - 70;
+        y.y = 600
         s_oStage.addChild(y);
         z = new createjs.Text("0 PT", "bold 40px Arial", "#ffffff");
-        z.textAlign = 
-        "center";
-        z.x = CANVAS_WIDTH / 2;
-        z.y = CANVAS_HEIGHT - 72;
+        z.textAlign =  "center";
+        z.x = CANVAS_WIDTH - 73;
+        z.y = 602
         s_oStage.addChild(z);
         m = new createjs.Text(TEXT_NEXT, "bold 32px Arial", "#000000");
         m.x = CANVAS_WIDTH - 108;
@@ -457,9 +446,7 @@ function CInterface(a) {
     this._onReleaseButUp = function() {
         s_oGame.releaseButUp()
     };
-    this._onAudioToggle = function() {
-        createjs.Sound.setMute(!s_bAudioActive)
-    };
+   
     this._onExit = function() {
         s_oGame.onExit()
     };
@@ -475,16 +462,13 @@ function CHelp(a) {
         d.on("pressup", function() {
             g._onExitHelp()
         });
-        b = new createjs.Text(TEXT_HELP, "bold 38px Arial", "#000000");
+        b = new createjs.Text(TEXT_HELP, "bold 38px 微软雅黑", "#000000");
         b.textAlign = "center";
         b.x = CANVAS_WIDTH / 2 + 2.5;
-        b.y = 322.5;
+        b.y = 345;
         s_oStage.addChild(b);
-        c = new createjs.Text(TEXT_HELP, "bold 38px Arial", "#ffffff");
-        c.textAlign = "center";
-        c.x = CANVAS_WIDTH / 2;
-        c.y = 320;
-        s_oStage.addChild(c)
+
+
     };
     this.unload = function() {
         s_oStage.removeChild(d);
@@ -565,7 +549,7 @@ function CGfxButton(a, c, b, d) {
 function CGame(a) {
     function c(a) {
         a || (a = window.event);
-        switch (a.keyCode) {
+        switch (a.keyCode) {//按键编码
             case 37:
                 s_oGame.shiftLeft();
                 break;
@@ -586,8 +570,7 @@ function CGame(a) {
         s_oStage.addChild(a);
         for (a = 0; a < GRID_COLS; a++)
             d[a] = Array(GRID_ROWS), h[a] = Array(GRID_ROWS), g[a] = Array(GRID_ROWS);
-        for (var b = 
-        {}, a = 0; a < NUM_COLORS; a++)
+        for (var b =  {}, a = 0; a < NUM_COLORS; a++)
             b["block_" + (a + 1)] = [a, a + 1];
         b.invisible = [-1, 0];
         for (var a = {images: [s_oSpriteLibrary.getSprite("block")],frames: {width: GRID_SIZE,height: GRID_SIZE,regX: 0,regY: 0},animations: b}, b = new createjs.SpriteSheet(a), l = 0; l < GRID_ROWS; l++)
@@ -725,7 +708,7 @@ function CGame(a) {
                     }
                 }
         if (u) {
-            !1 !== DISABLE_SOUND_MOBILE && !1 !== s_bMobile || createjs.Sound.play("explosion");
+           
             for (l = 0; l < GRID_ROWS; l++)
                 for (m = 0; m < GRID_COLS; m++)
                     h[m][l] && (d[m][l] = BLOCK_EMPTY, g[m][l].gotoAndStop("invisible"));
@@ -754,7 +737,7 @@ function CGame(a) {
     };
     this.shiftLeft = function() {
         if (e === STATE_MOVE) {
-            !1 !== DISABLE_SOUND_MOBILE && !1 !== s_bMobile || createjs.Sound.play("move");
+         
             var a = Math.floor((f.getX() - 
             GRID_OFFSET_X) / GRID_SIZE), b = Math.floor((f.getY() - GRID_OFFSET_Y) / GRID_SIZE);
             0 < a && 0 < f.getX() && d[a - 1][b + 1] === BLOCK_EMPTY && f.setX(f.getX() - GRID_SIZE)
@@ -762,14 +745,14 @@ function CGame(a) {
     };
     this.shiftRight = function() {
         if (e === STATE_MOVE) {
-            !1 !== DISABLE_SOUND_MOBILE && !1 !== s_bMobile || createjs.Sound.play("move");
+           
             var a = Math.floor((f.getX() - GRID_OFFSET_X) / GRID_SIZE), b = Math.floor((f.getY() - GRID_OFFSET_Y) / GRID_SIZE);
             f.getX() < GRID_OFFSET_Y + (GRID_COLS - 1) * GRID_SIZE && d[a + 1][b + 1] === BLOCK_EMPTY && f.setX(f.getX() + GRID_SIZE)
         }
     };
     this.pressButDown = function() {
         100 > 
-        f.getY() || (!1 !== DISABLE_SOUND_MOBILE && !1 !== s_bMobile || createjs.Sound.play("move"), f.setSpeed(BLOCK_DOWN_SPEED))
+        f.getY() || ( f.setSpeed(BLOCK_DOWN_SPEED))
     };
     this.releaseButUp = function() {
         var a = k;
@@ -835,8 +818,7 @@ function CFallingBlock(a) {
         b.y -= a
     };
     this.increaseHeight = function() {
-        b.y += 
-        c
+        b.y += c
     };
     this.setSpeed = function(a) {
         c = a
