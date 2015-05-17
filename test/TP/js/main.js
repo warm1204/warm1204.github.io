@@ -246,10 +246,7 @@ function CMenu() {
         var h = s_oSpriteLibrary.getSprite("but_play");
         c = new CTextButton(CANVAS_WIDTH / 2, CANVAS_HEIGHT - 200, h, TEXT_PLAY, "Arial", "#ffffff", 40);
         c.addEventListener(ON_MOUSE_UP, this._onButPlayRelease, this);
-       // if (!1===DISABLE_SOUND_MOBILE||!1===s_bMobile) {
-         //   b = new CToggle(CANVAS_WIDTH - h.width / 4,10 + h.height / 2, s_oSpriteLibrary.getSprite("audio_icon")),b.addEventListener(ON_MOUSE_UP,this._onAudioToggle,
-         //       this);
-        //};
+      
         d = new createjs.Shape;
         d.graphics.beginFill("black").drawRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
         s_oStage.addChild(d);
@@ -268,9 +265,7 @@ function CMenu() {
         this.unload();
         s_oMain.gotoGame()
     };
-   this._onAudioToggle = function(){
-        createjs.sound.setMute(!s_bAudioActive)
-   };
+   
     this._init()
 }
 function CMain() {
@@ -282,22 +277,18 @@ function CMain() {
         s_bMobile = jQuery.browser.mobile;
         s_iPrevTime = (new Date).getTime();
         createjs.Ticker.addEventListener("tick", this._update);
-       !1 !== DISABLE_SOUND_MOBILE && !1 !== s_bMobile || this._initSounds();
+       
         s_oSpriteLibrary = new CSpriteLibrary;
         d = new CPreloader;
         this._loadImages()
-    };
-     this._initSounds = function() {//声音
-        createjs.Sound.initializeDefaultPlugins() &&
-        (0 < navigator.userAgent.indexOf("Opera") || 0 < navigator.userAgent.indexOf("OPR") ? (createjs.Sound.alternateExtensions = ["mp3"], createjs.Sound.addEventListener("fileload", createjs.proxy(this.handleFileLoad, this)), createjs.Sound.registerSound("./sounds/soundtrack.ogg", "soundtrack"), createjs.Sound.registerSound("./sounds/move.ogg", "move"), createjs.Sound.registerSound("./sounds/explosion.ogg", "explosion")) : (createjs.Sound.alternateExtensions = ["ogg"], createjs.Sound.addEventListener("fileload", createjs.proxy(this.handleFileLoad, 
-        this)), createjs.Sound.registerSound("./sounds/soundtrack.mp3", "soundtrack"), createjs.Sound.registerSound("./sounds/move.mp3", "move"), createjs.Sound.registerSound("./sounds/explosion.mp3", "explosion")), c += 3)
     };
     this._loadImages = function() {
         s_oSpriteLibrary.init(this._onImagesLoaded, this._onAllImagesLoaded, this);
         s_oSpriteLibrary.addSprite("but_play", "./sprites/but_play.png");
         s_oSpriteLibrary.addSprite("but_exit", "./sprites/but_exit.png");
         s_oSpriteLibrary.addSprite("bg_menu", "./sprites/bg_menu.jpg");
-        s_oSpriteLibrary.addSprite("but_right", "./sprites/but_right.png");
+        s_oSpriteLibrary.addSprite("but_right", 
+        "./sprites/but_right.png");
         s_oSpriteLibrary.addSprite("but_left", "./sprites/but_left.png");
         s_oSpriteLibrary.addSprite("but_down", "./sprites/but_down.png");
         s_oSpriteLibrary.addSprite("but_up", "./sprites/but_up.png");
@@ -311,12 +302,12 @@ function CMain() {
     };
     this.handleFileLoad = function(b) {
         a++;
-        a === c && (d.unload(),!1 !== DISABLE_SOUND_MOBILE && !1 !== s_bMobile || createjs.Sound.play("soundtrack", {loop: -1,volume: .5}),  this.gotoMenu())
+        a === c && (d.unload(),  this.gotoMenu())
     };
     this._onImagesLoaded = function() {
         a++;
         d.refreshLoader(Math.floor(a / c * 100));
-        a === c && (d.unload(), !1 !== DISABLE_SOUND_MOBILE && !1 !== s_bMobile || createjs.Sound.play("soundtrack", {loop: -1,volume: .5}), this.gotoMenu())
+        a === c && (d.unload(),  this.gotoMenu())
     };
     this._onAllImagesLoaded = function() {
     };
@@ -387,11 +378,10 @@ function CInterface(a) {
         a = s_oSpriteLibrary.getSprite("but_up");
         f = new CGfxButton(60, k-100, a, !0);
         f.addEventListener(ON_MOUSE_UP, this._onReleaseButUp, this);
-        a = s_oSpriteLibrary.getSprite("but_exit");
-        u = new CGfxButton(CANVAS_WIDTH - a.width / 2 - 10, 10 + a.height / 2, a, !0);
-        u.addEventListener(ON_MOUSE_UP, this._onExit, this);
-           if (!1 === DISABLE_SOUND_MOBILE || !1 === s_bMobile)
-            x = new CToggle(CANVAS_WIDTH - a.width / 2 - 16, 180, s_oSpriteLibrary.getSprite("audio_icon")), x.addEventListener(ON_MOUSE_UP, this._onAudioToggle, this);
+       // a = s_oSpriteLibrary.getSprite("but_exit");
+       // u = new CGfxButton(CANVAS_WIDTH - a.width / 2 - 10, 10 + a.height / 2, a, !0);
+       // u.addEventListener(ON_MOUSE_UP, this._onExit, this);
+     
         y = new createjs.Text("0 PT", "bold 40px Arial", "#000000");
         y.textAlign = "center";
         y.x = CANVAS_WIDTH - 70;
@@ -456,9 +446,7 @@ function CInterface(a) {
     this._onReleaseButUp = function() {
         s_oGame.releaseButUp()
     };
-    this._onAudioToggle = function() {
-        createjs.Sound.setMute(!s_bAudioActive)
-    };
+   
     this._onExit = function() {
         s_oGame.onExit()
     };
@@ -720,7 +708,7 @@ function CGame(a) {
                     }
                 }
         if (u) {
-            !1 !== DISABLE_SOUND_MOBILE && !1 !== s_bMobile || createjs.Sound.play("explosion");
+           
             for (l = 0; l < GRID_ROWS; l++)
                 for (m = 0; m < GRID_COLS; m++)
                     h[m][l] && (d[m][l] = BLOCK_EMPTY, g[m][l].gotoAndStop("invisible"));
@@ -749,7 +737,7 @@ function CGame(a) {
     };
     this.shiftLeft = function() {
         if (e === STATE_MOVE) {
-            !1 !== DISABLE_SOUND_MOBILE && !1 !== s_bMobile || createjs.Sound.play("move");
+         
             var a = Math.floor((f.getX() - 
             GRID_OFFSET_X) / GRID_SIZE), b = Math.floor((f.getY() - GRID_OFFSET_Y) / GRID_SIZE);
             0 < a && 0 < f.getX() && d[a - 1][b + 1] === BLOCK_EMPTY && f.setX(f.getX() - GRID_SIZE)
@@ -757,14 +745,14 @@ function CGame(a) {
     };
     this.shiftRight = function() {
         if (e === STATE_MOVE) {
-            !1 !== DISABLE_SOUND_MOBILE && !1 !== s_bMobile || createjs.Sound.play("move");
+           
             var a = Math.floor((f.getX() - GRID_OFFSET_X) / GRID_SIZE), b = Math.floor((f.getY() - GRID_OFFSET_Y) / GRID_SIZE);
             f.getX() < GRID_OFFSET_Y + (GRID_COLS - 1) * GRID_SIZE && d[a + 1][b + 1] === BLOCK_EMPTY && f.setX(f.getX() + GRID_SIZE)
         }
     };
     this.pressButDown = function() {
         100 > 
-        f.getY() || (!1 !== DISABLE_SOUND_MOBILE && !1 !== s_bMobile || createjs.Sound.play("move"), f.setSpeed(BLOCK_DOWN_SPEED))
+        f.getY() || ( f.setSpeed(BLOCK_DOWN_SPEED))
     };
     this.releaseButUp = function() {
         var a = k;
@@ -902,4 +890,5 @@ function CEndPanel(a) {
         s_oGame.onExit()
     };
     this._init(a)
-};
+}
+;
