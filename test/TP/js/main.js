@@ -246,10 +246,6 @@ function CMenu() {
         var h = s_oSpriteLibrary.getSprite("but_play");
         c = new CTextButton(CANVAS_WIDTH / 2, CANVAS_HEIGHT - 200, h, TEXT_PLAY, "Arial", "#ffffff", 40);
         c.addEventListener(ON_MOUSE_UP, this._onButPlayRelease, this);
-       // if (!1===DISABLE_SOUND_MOBILE||!1===s_bMobile) {
-         //   b = new CToggle(CANVAS_WIDTH - h.width / 4,10 + h.height / 2, s_oSpriteLibrary.getSprite("audio_icon")),b.addEventListener(ON_MOUSE_UP,this._onAudioToggle,
-         //       this);
-        //};
         d = new createjs.Shape;
         d.graphics.beginFill("black").drawRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
         s_oStage.addChild(d);
@@ -295,7 +291,7 @@ function CMain() {
     this._loadImages = function() {
         s_oSpriteLibrary.init(this._onImagesLoaded, this._onAllImagesLoaded, this);
         s_oSpriteLibrary.addSprite("but_play", "./sprites/but_play.png");
-        s_oSpriteLibrary.addSprite("but_exit", "./sprites/but_exit.png");
+        s_oSpriteLibrary.addSprite("but_exits", "./sprites/but_exits.png");
         s_oSpriteLibrary.addSprite("bg_menu", "./sprites/bg_menu.jpg");
         s_oSpriteLibrary.addSprite("but_right", "./sprites/but_right.png");
         s_oSpriteLibrary.addSprite("but_left", "./sprites/but_left.png");
@@ -305,7 +301,7 @@ function CMain() {
         s_oSpriteLibrary.addSprite("block", "./sprites/block.png");
         s_oSpriteLibrary.addSprite("msg_box", "./sprites/msg_box.png");
         s_oSpriteLibrary.addSprite("bg_help", "./sprites/bg_help.png");
-        s_oSpriteLibrary.addSprite("audio_icon", "./sprites/audio_icon.png");
+        s_oSpriteLibrary.addSprite("audio_icons", "./sprites/audio_icons.png");
         c += s_oSpriteLibrary.getNumSprites();
         s_oSpriteLibrary.loadSprites()
     };
@@ -387,11 +383,11 @@ function CInterface(a) {
         a = s_oSpriteLibrary.getSprite("but_up");
         f = new CGfxButton(60, k-100, a, !0);
         f.addEventListener(ON_MOUSE_UP, this._onReleaseButUp, this);
-        a = s_oSpriteLibrary.getSprite("but_exit");
+        a = s_oSpriteLibrary.getSprite("but_exits");
         u = new CGfxButton(CANVAS_WIDTH - a.width / 2 - 10, 10 + a.height / 2, a, !0);
         u.addEventListener(ON_MOUSE_UP, this._onExit, this);
            if (!1 === DISABLE_SOUND_MOBILE || !1 === s_bMobile)
-            x = new CToggle(CANVAS_WIDTH - a.width / 2 - 16, 180, s_oSpriteLibrary.getSprite("audio_icon")), x.addEventListener(ON_MOUSE_UP, this._onAudioToggle, this);
+            x = new CToggle(CANVAS_WIDTH - a.width / 2 - 16, 180, s_oSpriteLibrary.getSprite("audio_icons")), x.addEventListener(ON_MOUSE_UP, this._onAudioToggle, this);
         y = new createjs.Text("0 PT", "bold 40px Arial", "#000000");
         y.textAlign = "center";
         y.x = CANVAS_WIDTH - 70;
