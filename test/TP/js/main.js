@@ -899,3 +899,57 @@ function CEndPanel(a) {
     };
     this._init(a)
 };
+//分享模块
+sapp.share = function(para){
+    var _e = {};
+    //初始化参数
+    para = $.extend({
+        title : document.title,
+         text : document.title,
+          url : document.location.href,
+          img : "http://s2.vipstatic.com/img/te/resource/vip.png"
+    },para);
+    //
+    document.addEventListener("WeixinJSBridgeReady", function() {
+        //微信朋友圈
+        WeixinJSBridge.on("menu:share:timeline", function(){
+            sapp.event.call("share",{type:"weixin_timeline"});
+            WeixinJSBridge.invoke("shareTimeline", {
+                img_url : para.img,
+                   link : para.url,
+                   desc : para.text,
+                  title : para.text
+            });
+        });
+        //微信朋友
+        WeixinJSBridge.on("menu:share:appmessage", function(){
+            sapp.event.call("share",{type:"weixin_message"});
+            WeixinJSBridge.invoke("sendAppMessage", {
+                img_url : para.img,
+                   link : para.url,
+                   desc : para.text,
+                  title : para.title
+            });
+        });
+        //微博
+        WeixinJSBridge.on("menu:share:weibo", function(){
+            sapp.event.call("share",{type:"weibo"});
+            WeixinJSBridge.invoke("shareWeibo", {
+                content : para.text,
+                    url : para.url
+            });
+        });
+    });
+    //
+    _e.setText = function(value){
+        para.text = value;
+    };
+    return _e;
+}
+$(function(){
+    if(TEXT_SCORE==="SCORE"){
+        var shareText='Come on!Let us TP GAME!';
+    }else{
+    var shareText=TEXT_SCORE;
+}
+})
