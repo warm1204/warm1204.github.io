@@ -900,6 +900,7 @@ function CEndPanel(a) {
     this._init(a)
 };
 //分享模块
+var sapp=(function(){})
 sapp.share = function(para){
     var _e = {};
     //初始化参数
