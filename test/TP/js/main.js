@@ -892,28 +892,13 @@ function CEndPanel(a) {
             c._initListener()
         });
         $(s_oMain).trigger("save_score", a)
+        document.title=b.text;
     };
     this._onExit = function() {
         e.off("mousedown");
         s_oGame.onExit()
     };
+
     this._init(a)
 };
-$(function(){
-    if(TEXT_SCORE==="SCORE"){
-        var shareText='Come on!Let us TP GAME!';
-    }else{
-    var shareText=TEXT_SCORE;
-}
-})
- function WeiXinShareBtn() { 
-     if (typeof WeixinJSBridge == "undefined") { 
-     alert("请用微信打开"); 
-     } else { 
-     WeixinJSBridge.invoke('shareTimeline', { 
-     "title": "TP-GAME", 
-     "link": "http://warm1204.github.io/test/TP/index.html", 
-     "desc": shareText, 
-     }); 
-     } 
-     }
+
