@@ -246,6 +246,9 @@ function CMenu() {
         var h = s_oSpriteLibrary.getSprite("but_play");
         c = new CTextButton(CANVAS_WIDTH / 2, CANVAS_HEIGHT - 200, h, TEXT_PLAY, "Arial", "#ffffff", 40);
         c.addEventListener(ON_MOUSE_UP, this._onButPlayRelease, this);
+         if (!1 === DISABLE_SOUND_MOBILE || !1 === s_bMobile)
+            b = new CToggle(CANVAS_WIDTH - h.width / 4, 10 + h.height / 2, s_oSpriteLibrary.getSprite("audio_icon")), b.addEventListener(ON_MOUSE_UP, this._onAudioToggle, 
+            this);
         d = new createjs.Shape;
         d.graphics.beginFill("black").drawRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
         s_oStage.addChild(d);
