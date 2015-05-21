@@ -285,9 +285,15 @@ function CMain() {
         this._loadImages()
     };
      this._initSounds = function() {//声音
-        createjs.Sound.initializeDefaultPlugins() &&
-        (0 < navigator.userAgent.indexOf("Opera") || 0 < navigator.userAgent.indexOf("OPR") ? (createjs.Sound.alternateExtensions = ["mp3"], createjs.Sound.addEventListener("fileload", createjs.proxy(this.handleFileLoad, this)), createjs.Sound.registerSound("./sounds/soundtrack.ogg", "soundtrack"), createjs.Sound.registerSound("./sounds/move.ogg", "move"), createjs.Sound.registerSound("./sounds/explosion.ogg", "explosion")) : (createjs.Sound.alternateExtensions = ["ogg"], createjs.Sound.addEventListener("fileload", createjs.proxy(this.handleFileLoad, 
-        this)), createjs.Sound.registerSound("./sounds/soundtrack.mp3", "soundtrack"), createjs.Sound.registerSound("./sounds/move.mp3", "move"), createjs.Sound.registerSound("./sounds/explosion.mp3", "explosion")), c += 3)
+        createjs.Sound.initializeDefaultPlugins() &&(0 < navigator.userAgent.indexOf("Opera") || 0 < navigator.userAgent.indexOf("OPR") 
+            ? (createjs.Sound.alternateExtensions = ["mp3"], 
+                createjs.Sound.addEventListener("fileload", createjs.proxy(this.handleFileLoad, this)),
+                 createjs.Sound.registerSound("./sounds/soundtrack.ogg", "soundtrack"),
+                  createjs.Sound.registerSound("./sounds/move.ogg", "move"), 
+                  createjs.Sound.registerSound("./sounds/explosion.ogg", "explosion")) :
+                   (createjs.Sound.alternateExtensions = ["ogg"], createjs.Sound.addEventListener("fileload", createjs.proxy(this.handleFileLoad, this)),
+                    createjs.Sound.registerSound("./sounds/soundtrack.mp3", "soundtrack"), 
+                    createjs.Sound.registerSound("./sounds/move.mp3", "move"), createjs.Sound.registerSound("./sounds/explosion.mp3", "explosion")), c += 3)
     };
     this._loadImages = function() {
         s_oSpriteLibrary.init(this._onImagesLoaded, this._onAllImagesLoaded, this);
@@ -308,7 +314,10 @@ function CMain() {
     };
     this.handleFileLoad = function(b) {
         a++;
-        a === c && (d.unload(),!1 !== DISABLE_SOUND_MOBILE && !1 !== s_bMobile || createjs.Sound.play("soundtrack", {loop: -1,volume: .5}),  this.gotoMenu())
+        a === c && (d.unload(),
+            !1 !== DISABLE_SOUND_MOBILE &&
+             !1 !== s_bMobile || 
+             createjs.Sound.play("soundtrack", {loop: -1,volume: .5}),  this.gotoMenu())
     };
     this._onImagesLoaded = function() {
         a++;
@@ -902,5 +911,3 @@ function CEndPanel(a) {
 
     this._init(a)
 };
-
-s_bAudioActive.play();
