@@ -61,3 +61,5 @@ canvas {
     font-style: normal;
 
 }
+
+#btn_music.mopen{background: url(../sprites/audio_icons.png);}
