@@ -911,9 +911,9 @@ function CEndPanel(a) {
 
     this._init(a)
 };
-/***手机背景乐**
+/***手机背景乐***/
     $(function() {
-        if (!1 === DISABLE_SOUND_MOBILE) {
+        if (!1 == DISABLE_SOUND_MOBILE) {
             var audio = $('audio');
             var blnP = true;
             $('#btn_music').click(function() {
@@ -932,4 +932,4 @@ function CEndPanel(a) {
                 }
             })
         }
-    })*/
+    })
