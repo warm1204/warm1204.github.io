@@ -923,7 +923,7 @@ function CEndPanel(a) {
                     audio.pause();
                     blnP = false;
                 } else {
-                     $('#btn_music').css("z-index","-1");
+                    $('#btn_music').css("z-index","-1");
                     $('#btn_music').removeClass('mclose');
                     $('#btn_music').addClass('mopen');
                     audio.play();
