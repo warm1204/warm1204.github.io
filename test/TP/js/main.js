@@ -911,3 +911,28 @@ function CEndPanel(a) {
 
     this._init(a)
 };
+/***手机背景乐***/
+    $(function() {
+        if (!1 === DISABLE_SOUND_MOBILE) {
+            var audio = $('audio');
+            var blnP = true;
+            $('#btn_music').click(function() {
+                if (blnP) {
+                    $('#btn_music').removeClass('mopen');
+                    $('#btn_music').addClass('mclose');
+                    audio.pause();
+                    blnP = false;
+                } else {
+                    $('#btn_music').removeClass('mclose');
+                    $('#btn_music').addClass('mopen');
+                    audio.play();
+                    blnP = true;
+                }
+            })
+        }else{
+             $('#btn_music').removeClass('mopen');
+            $('#btn_music').addClass('mclose');
+              audio.pause();
+              blnP = false;
+        }
+    })
