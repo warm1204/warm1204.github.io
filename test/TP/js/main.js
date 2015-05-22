@@ -281,7 +281,7 @@ function CMain() {
         createjs.Ticker.addEventListener("tick", this._update);
        !1 !== DISABLE_SOUND_MOBILE && !1 !== s_bMobile || this._initSounds();
 
-            var audio = $('#music');
+            var audio =document.getElementById('music');
             if (!1 !== DISABLE_SOUND_MOBILE && !1 !== s_bMobile || this._initSounds()) {
                 audio.pause();
             } else {
@@ -302,7 +302,7 @@ function CMain() {
                     }
                 })
             }
-            
+
         s_oSpriteLibrary = new CSpriteLibrary;
         d = new CPreloader;
         this._loadImages()
