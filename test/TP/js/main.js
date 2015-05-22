@@ -913,7 +913,7 @@ function CEndPanel(a) {
 };
 
 
-  $(function(){
+ /* $(function(){
     if(  !1 !== DISABLE_SOUND_MOBILE && !1 !== s_bMobile || this._initSounds()){}
         else{
               $('#btn_music').show();
@@ -934,4 +934,4 @@ function CEndPanel(a) {
                 }
             })
         }
-  })
+  })*/
