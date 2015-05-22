@@ -25,29 +25,6 @@ $(oMain).on("restart", function(evt) {
 });
 </script>
 <canvas id="canvas" class="ani_hack" width="640" height="960" style="width: 320px; height: 426.666666666667px; left: 0px;"> </canvas>
-<audio src="sounds/soundtrack.mp3" id="music" autoplay loop="loop"></audio>
-<a href="javascript:void(0);" id="btn_music" class="mopen"></a>
-<script>
-	$(function(){
-		var audio = document.getElementById('music');
-		var blnp = true;
-		$('#btn_music').click(function(){
-			if (blnp) {
-            $('#btn_music').removeClass('mopen');
-            $('#btn_music').addClass('mclose');
-            //document.getElementById("music").pause();
-            audio.pause();
-            blnp = false;
-        } else {
-            $('#btn_music').removeClass('mclose');
-            $('#btn_music').addClass('mopen');
-            //document.getElementById("music").play();
-            audio.play();
-            blnp = true;
-        }
-		})
-	})
-</script>
 <script src="../js/stat.js"></script>
 
 </body></html>
