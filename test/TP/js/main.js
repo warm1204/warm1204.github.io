@@ -358,7 +358,7 @@ TEXT_PLAY = "PLAY";
 TEXT_SCORE = "TP-GAME SCORE";
 TEXT_GAME_OVER = "GAME OVER";
 TEXT_NEXT = "NEXT";
-TEXT_HELP = "游戏玩法";
+TEXT_HELP = "相同颜色图案连成线消除。键盘上下左右键分控换序和向下左右移动";
 function CInterface(a) {
     var c = CANVAS_WIDTH - 100, b = 260 + 2 * GRID_SIZE, d = CANVAS_WIDTH - 100, h = 260 + GRID_SIZE, g = CANVAS_WIDTH - 100, e = CANVAS_HEIGHT - 60, s = CANVAS_HEIGHT - 60, v = CANVAS_HEIGHT - 60, k = CANVAS_HEIGHT - 60, p, q, r, u, A, t, f, w, x, y, z, l, m, B;
     this._init = function(a) {
@@ -476,10 +476,10 @@ function CHelp(a) {
         d.on("pressup", function() {
             g._onExitHelp()
         });
-        b = new createjs.Text(TEXT_HELP, "bold 38px 微软雅黑", "#000000");
+        b = new createjs.Text(TEXT_HELP, "bold 16px 微软雅黑", "#000000");
         b.textAlign = "center";
         b.x = CANVAS_WIDTH / 2 + 2.5;
-        b.y = 345;
+        b.y = 380;
         s_oStage.addChild(b);
 
 
