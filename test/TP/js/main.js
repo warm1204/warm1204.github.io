@@ -911,19 +911,21 @@ function CEndPanel(a) {
 
     this._init(a)
 };
-/***手机背景乐***/
-    $(function() {
-        if (!1 == DISABLE_SOUND_MOBILE) {
-            var audio = $('audio');
-            var blnP = true;
-            $('#btn_music').click(function() {
+
+
+  $(function(){
+    if(  !1 !== DISABLE_SOUND_MOBILE && !1 !== s_bMobile || this._initSounds()){}
+        else{
+              $('#btn_music').show();
+              $('#music').show();
+              var audio = $('#music');
+             $('#btn_music').click(function() {
                 if (blnP) {
                     $('#btn_music').removeClass('mopen');
                     $('#btn_music').addClass('mclose');
                     audio.pause();
                     blnP = false;
                 } else {
-                    $('#btn_music').css("z-index","-1");
                     $('#btn_music').removeClass('mclose');
                     $('#btn_music').addClass('mopen');
                     audio.play();
@@ -932,4 +934,4 @@ function CEndPanel(a) {
                 }
             })
         }
-    })
+  })
