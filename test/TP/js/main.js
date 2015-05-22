@@ -929,12 +929,5 @@ function CEndPanel(a) {
                     blnP = true;
                 }
             })
-        }else{
-             var audio = $('audio');
-            var blnP = true;
-             $('#btn_music').removeClass('mopen');
-            $('#btn_music').addClass('mclose');
-              audio.pause();
-              blnP = false;
         }
     })
