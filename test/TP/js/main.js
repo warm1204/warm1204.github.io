@@ -911,5 +911,3 @@ function CEndPanel(a) {
 
     this._init(a)
 };
-
-
