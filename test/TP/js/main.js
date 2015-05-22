@@ -280,29 +280,6 @@ function CMain() {
         s_iPrevTime = (new Date).getTime();
         createjs.Ticker.addEventListener("tick", this._update);
        !1 !== DISABLE_SOUND_MOBILE && !1 !== s_bMobile || this._initSounds();
-
-            var audio =document.getElementById('music');
-            if (!1 !== DISABLE_SOUND_MOBILE && !1 !== s_bMobile || this._initSounds()) {
-                audio.pause();
-            } else {
-                $('#btn_music').show();
-                $('#music').show();
-                $('#btn_music').click(function() {
-                    if (blnP) {
-                        $('#btn_music').removeClass('mopen');
-                        $('#btn_music').addClass('mclose');
-                        audio.pause();
-                        blnP = false;
-                    } else {
-                        $('#btn_music').removeClass('mclose');
-                        $('#btn_music').addClass('mopen');
-                        audio.play();
-                        blnP = true;
-
-                    }
-                })
-            }
-
         s_oSpriteLibrary = new CSpriteLibrary;
         d = new CPreloader;
         this._loadImages()
