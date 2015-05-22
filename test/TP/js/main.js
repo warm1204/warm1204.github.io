@@ -913,12 +913,12 @@ function CEndPanel(a) {
 };
 
 
- /* $(function(){
-    if(  !1 !== DISABLE_SOUND_MOBILE && !1 !== s_bMobile || this._initSounds()){}
+  $(function(){
+    var audio = $('#music');
+    if(  !1 !== DISABLE_SOUND_MOBILE && !1 !== s_bMobile || this._initSounds()){ audio.pause();}
         else{
               $('#btn_music').show();
               $('#music').show();
-              var audio = $('#music');
              $('#btn_music').click(function() {
                 if (blnP) {
                     $('#btn_music').removeClass('mopen');
@@ -934,4 +934,4 @@ function CEndPanel(a) {
                 }
             })
         }
-  })*/
+  })
