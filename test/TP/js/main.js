@@ -33,7 +33,7 @@ function CSpriteLibrary() {
 }
 var CANVAS_WIDTH = 640, 
  CANVAS_HEIGHT = 960,
- DISABLE_SOUND_MOBILE = !0, 
+// DISABLE_SOUND_MOBILE = !0, 
  FPS_TIME = 1E3 / 24, 
  STATE_LOADING = 0, STATE_MENU = 1, STATE_HELP = 1, STATE_GAME = 3,
   ON_MOUSE_DOWN = 0, ON_MOUSE_UP = 1, ON_MOUSE_OVER = 2, ON_MOUSE_OUT = 3, ON_DRAG_START = 4, ON_DRAG_END = 5,
@@ -111,15 +111,6 @@ function sizeHandler() {
         $("#canvas").css("height", c + "px");
         $("#canvas").css("left", b / 2 - a / 2 + "px")
     }
-}
-function randomFloatBetween(a, c, b) {
-    "undefined" === typeof b && (b = 2);
-    return parseFloat(Math.min(a + Math.random() * (c - a), c).toFixed(b))
-}
-function shuffle(a) {
-    for (var c = a.length, b, d; 0 !== c; )
-        d = Math.floor(Math.random() * c), c -= 1, b = a[c], a[c] = a[d], a[d] = b;
-    return a
 }
 function NoClickDelay(a) {
     this.element = a;
@@ -234,9 +225,8 @@ function CPreloader() {
     };
     this._onPreloaderImagesLoaded = function() {
     };
-    this._onAllPreloaderImagesLoaded = function() {
-        a = new createjs.Text("", "bold 42px Arial center", "#ffffff");
-        a.x = CANVAS_WIDTH / 2 - 80;
+   this._onAllPreloaderImagesLoaded = function() {
+        a = new createjs.Text("", "bold 42px Arial center", "#000000");
         a.y = CANVAS_HEIGHT / 2;
         s_oStage.addChild(a)
     };
@@ -599,7 +589,8 @@ function CGame(a) {
         for (var b =  {}, a = 0; a < NUM_COLORS; a++)
             b["block_" + (a + 1)] = [a, a + 1];
         b.invisible = [-1, 0];
-        for (var a = {images: [s_oSpriteLibrary.getSprite("block")],frames: {width: GRID_SIZE,height: GRID_SIZE,regX: 0,regY: 0},animations: b}, b = new createjs.SpriteSheet(a), l = 0; l < GRID_ROWS; l++)
+        for (var a = {images: [s_oSpriteLibrary.getSprite("block")],frames: {width: GRID_SIZE,height: GRID_SIZE,regX: 0,regY: 0},animations: b}, 
+            b = new createjs.SpriteSheet(a), l = 0; l < GRID_ROWS; l++)
             for (a = 0; a < GRID_COLS; a++) {
                 d[a][l] = BLOCK_EMPTY;
                 var m = new createjs.Sprite(b, "invisible");
@@ -660,7 +651,7 @@ function CGame(a) {
         u = !1;
         for (var l = 0; l < GRID_ROWS; l++)
             for (var m = 0; m < GRID_COLS; m++)
-                h[m][l] = !1;
+                h[m][l] = !1;//h[m][l]为此列色块在方格的位置，m为第几列，l为第几行
         for (l = 0; l < GRID_ROWS; l++)
             for (var k = 0; k < GRID_COLS; k++)
                 if (d[k][l] !== BLOCK_EMPTY) {
@@ -682,7 +673,7 @@ function CGame(a) {
                         t += c * c
                     }
                     k = n
-                }
+                }//行排是否可消除
         for (m = 0; m < GRID_COLS; m++)
             for (n = 0; n < GRID_ROWS; n++)
                 if (d[m][n] !== BLOCK_EMPTY) {
@@ -703,7 +694,7 @@ function CGame(a) {
                         t += c * c
                     }
                     n = f
-                }
+                }//竖排是否可消除
         for (l = 0; l < GRID_ROWS - (BLOCK_LINE - 1); l++)
             for (m = 0; m < GRID_COLS - (BLOCK_LINE - 1); m++)
                 if (n = m, f = l, a = d[n][f], a !== BLOCK_EMPTY) {
