@@ -228,7 +228,7 @@ function CPreloader() {
     };
    this._onAllPreloaderImagesLoaded = function() {
         a = new createjs.Text("", "bold 42px Arial center", "#000000");
-        a.x = CANVAS_WIDTH  - 80;
+        a.x = CANVAS_WIDTH  - 40;
         a.y = CANVAS_HEIGHT / 2;
         s_oStage.addChild(a)
     };
