@@ -659,16 +659,15 @@ function CGame(a) {
                 if (d[k][l] !== BLOCK_EMPTY) {
                     a = d[k][l];
                     c = 0;
-                    for (var n = k; n < GRID_COLS; n++)
-                        if (d[n][l] === a)
-                            c++;
+                    for (var n = k; n < GRID_COLS; n++)//第一次n=k，第二次n=k+1，第三次n=k+2
+                        if (d[n][l] === a)//竖排相邻两个相同，一次相同c=c+1，继续循环将k+1和k+2进行对比
+                            c++;//当c=3，则判断消除条件成功
                         else {
-                            n--;
+                            n--;//如果不符合if的条件，则n--循环结束回到上面的父级if
                             break
                         }
-                    if (c >= BLOCK_LINE) {
-                        u = 
-                        !0;
+                    if (c >= BLOCK_LINE) {//当c=3，则判断消除条件成功
+                        u = !0;//u=true即达到消除条件
                         n === GRID_COLS && n--;
                         for (m = k; m <= n; m++)
                             h[m][l] = !0;
@@ -701,13 +700,12 @@ function CGame(a) {
             for (m = 0; m < GRID_COLS - (BLOCK_LINE - 1); m++)
                 if (n = m, f = l, a = d[n][f], a !== BLOCK_EMPTY) {
                     for (c = 0; n < GRID_COLS && f < GRID_ROWS && d[n][f] === a; )
-                        c++, n++, f++;
+                        c++, n++, f++;//对角线上的相邻比较
                     if (c >= BLOCK_LINE) {
                         u = !0;
                         f--;
                         k = m;
-                        for (n = 
-                        l; n <= f; )
+                        for (n = l; n <= f; )
                             h[k++][n++] = !0;
                         t += c * c * 2
                     }
@@ -726,7 +724,7 @@ function CGame(a) {
                         t += c * c * 2
                     }
                 }
-        if (u) {
+        if (u) {//true消除
             !1 !== DISABLE_SOUND_MOBILE && !1 !== s_bMobile || createjs.Sound.play("explosion");
             for (l = 0; l < GRID_ROWS; l++)
                 for (m = 0; m < GRID_COLS; m++)
@@ -816,16 +814,21 @@ function CFallingBlock(a) {
     var c = BLOCK_SPEED, b, d, h, g;
     this._init = function(a) {
         b = new createjs.Container;
+
         d = new createjs.Sprite(a, "invisible");
         d.y = 2 * GRID_SIZE;
+
         h = new createjs.Sprite(a, "invisible");
-        h.y = GRID_SIZE;
+        h.y = GRID_SIZE;//第二个色块
+
         g = new createjs.Sprite(a, "invisible");
-        g.y = 0;
+        g.y = 0;//第一个色块
+
         b.addChild(d);
         b.addChild(h);
         b.addChild(g);
-        b.regY = 3 * GRID_SIZE;
+
+        b.regY = 3 * GRID_SIZE;//一列色块的Y
         s_oStage.addChild(b)
     };
     this.setBlock = function(a, b, c) {

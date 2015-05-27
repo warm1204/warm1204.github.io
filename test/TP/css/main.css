@@ -34,7 +34,7 @@ canvas {
 	-ms-touch-action: none;
 }
 
-.ani_hack{
+.sekuai{
     -webkit-perspective: 1000;
     -webkit-backface-visibility: hidden;
     
