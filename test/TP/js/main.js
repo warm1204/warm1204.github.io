@@ -418,7 +418,7 @@ function CInterface(a) {
         s_oStage.addChild(l);
         B = new CEndPanel(s_oSpriteLibrary.getSprite("msg_box"))
     };
-    this.unload = function() {
+  /*  this.unload = function() {
         u.unload();
         u = null;
         A.unload();
@@ -437,7 +437,7 @@ function CInterface(a) {
         s_oStage.removeChild(p);
         s_oStage.removeChild(q);
         s_oStage.removeChild(r)
-    };
+    };*/
     this.setNextBlock = function(a, d, b) {
         p.gotoAndStop("block_" + a);
         q.gotoAndStop("block_" + d);
