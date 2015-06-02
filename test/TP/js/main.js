@@ -614,9 +614,9 @@ function CGame(a) {
         A = 0;
         e = STATE_MOVE
     };
-   /* this.unload = function() {
+   this.unload = function() {
         w.unload()
-    };*/
+    };
     this.onExitHelp = function() {
         u = !1
     };
