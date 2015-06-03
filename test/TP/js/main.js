@@ -31,9 +31,9 @@ function CSpriteLibrary() {
         return c
     }
 }
-var CANVAS_WIDTH = 640, 
+var CANVAS_WIDTH = 640,
  CANVAS_HEIGHT = 960,
-// DISABLE_SOUND_MOBILE = !0, 
+// DISABLE_SOUND_MOBILE = !0,
 DISABLE_SOUND_MOBILE = false,
  FPS_TIME = 1E3 / 24, 
  STATE_LOADING = 0, STATE_MENU = 1, STATE_HELP = 1, STATE_GAME = 3,
@@ -355,7 +355,7 @@ function CMain() {
     s_oMain = this;
     this.initContainer()
 }
-var s_iCntTime = 0, 
+var s_iCntTime = 0,
  s_iTimeElaps = 0, 
  s_iPrevTime = 0, s_iCntFps = 0, s_iCurFps = 0, s_bMobile, s_bAudioActive = !0, s_oDrawLayer, s_oStage, s_oMain, s_oSpriteLibrary;
 TEXT_PLAY = "PLAY";
