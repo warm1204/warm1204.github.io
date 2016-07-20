@@ -232,7 +232,7 @@
 <img id="scream" src="http://warm1204.github.io/image/people.jpg">
 <canvas id="getImage" width="390" height="480"></canvas>
 <script>
-		document.getElementById("scream").onload=function(){
+		window.onload=function(){
   var c=document.getElementById("getImage");
   var ctx=c.getContext("2d");
   var img=document.getElementById("scream");
@@ -247,7 +247,7 @@
     imgData.data[i+3]=255;
     }
   ctx.putImageData(imgData,0,0);
-};
+}
 	</script>
 
 <br>
