@@ -18,6 +18,7 @@
 	<div class="nav"></div>
 	<div class="wrapper">
 	<h2>准备</h2>
+	<h3>一.width和height</h3>
 	<pre><code> &lt;canvas id="myCanvas" width="666" height="666" &gt; &lt;/canvas&gt; </code></pre>
 	<p>这里的width和height指实际像素宽高，我们也可以理解为是canvas的分辨率，按标准不带单位，<strong>与在css里面定义是两种东西：</strong></p>
 	<p>1.从js来看</p>
@@ -38,9 +39,43 @@
 	<pre><code>
 	&lt;canvas width="300" height="300" style="width:100px;height="100px"&gt;
 	</pre></code>
-	<p>实际上是把一个300x300的canvas画布强制缩放成100px*50px了。canvas本身有一个默认的width和height，一般是300x150</p>
+	<p>实际上是把一个300x300的canvas画布强制缩放成100px*100px了。canvas本身有一个默认的width和height，一般是300x150</p>
     <br>
-
+    <h3>二.beginPath和closePath</h3>
+    <p>beginPath和closePath是绘图过程中必不可少的两个东西，他们完全没有关系</p>
+    <br>
+    <p>beginPath方法类似于开启新的路径绘画或清空已有路径,会以最接近的上一个beginPath为起点渲染下面的所有绘图 </p>
+    <pre><code>
+    context.beginPath()
+	context.moveTo(100,100)
+	context.lineTo(700,700)
+	context.strokeStyle = "#005588"
+	context.stroke()
+    //context.beginPath()
+	context.moveTo(200,200)
+	context.lineTo(800,800)
+	context.strokeStyle = "#ff6567"
+	context.stroke()
+    </code></pre>
+    <br>
+    <p>closePath： 
+	并不是表示结束，它的意思是关闭路径，就是从当前路径的终点连一条路径到起点，让整个路径闭合起来。但是如果没有它，用了fill()内部色填充，也是会如期把可能的闭合路径填上内部色。 
+	</p>
+	<p>就是说下面的两段代码是一个效果。</p>
+	<pre><code>
+	//eg1
+	context.moveTo(100,100)
+	context.lineTo(700,700)
+	context.lineTo(100,700)
+	context.closePath()
+	//eg2
+	context.moveTo(100,100)
+	context.lineTo(700,700)
+	context.lineTo(100,700)
+	context.lineTo(100,100)
+	</code></pre>	
+	<br>
+	<p>综上beginPath和closePath其实是没有关系的~</p>	
 	<h2>一.基本图形</h2>
 	<h3>线</h3>
 	<p>绘制一条从当前未知到指定x以及y位置的直线 </p>
@@ -71,6 +106,7 @@
     <p>绘制三次贝塞尔曲线，x,y为结束点，cp1x,cp1y为控制点一，cp2x,cp2y为控制点2</p>
     <pre><code>bezierCurveTo(cp1x,cp1y,cp2x,cp2y,x,y))</code></pre>
 	<br>
+	<canvas id="Beisaier"></canvas>
     <h2>二.样式</h2>
     <h3>colors</h3>
     <p>设置图形的填充颜色</p>
@@ -168,7 +204,48 @@
   	ctx.arc(0,0,60,0,Math.PI*2,true);
   	ctx.clip();
   	</code></pre>
+	<br>
+	<h3>getImageData()& putImageData</h3>
+	<p>getImageData() 方法返回 ImageData 对象，该对象拷贝了画布指定矩形的像素数据。</p>
+	<pre><code>context.getImageData(x,y,width,height);</code></pre>
+	<br>
+	<p>putImageData(imgData,x,y):把getImageData()得到的像素数据展现出来</p>
+	<br>
+	<p>demo:</p>	
+	<img id="scream" src="http://anchen1204.github.io/image/canvasWidth.png">
+	<canvas id="getImage" width="390" height="480"></canvas>
+	<script>
+		document.getElementById("scream").onload=function(){
+  var c=document.getElementById("getImage");
+  var ctx=c.getContext("2d");
+  var img=document.getElementById("scream");
+  ctx.drawImage(img,0,0);
+  var imgData=ctx.getImageData(0,0,c.width,c.height);
+  // invert colors
+  for (var i=0;i<imgData.data.length;i+=4)
+    {
+    imgData.data[i]=255-imgData.data[i];
+    imgData.data[i+1]=255-imgData.data[i+1];
+    imgData.data[i+2]=255-imgData.data[i+2];
+    imgData.data[i+3]=255;
+    }
+  ctx.putImageData(imgData,0,0);
+};
+	</script>
 
+
+
+
+
+
+	<br>
+	<h3>canvas.toDataURL(MIME)</h3>	
+	<p>上面介绍了把图片导入／转化为canvas，那么canvas画布也可以转为图片，需要一个toDataURL()方法,因为在canvas中绘出的图片只是canvas标签而已，并非是真正的图片，是不能右键另存为的</p>
+	<pre><code>
+	var image = new Image(); 
+	image.src = canvas.toDataURL("image/png");
+	</code></pre>	
+	<p>canvas.toDataURL 返回的是一串Base64编码的URL</p>
   	<br>
   	<br>
   	<p>demo:简易画板</p>
@@ -192,13 +269,14 @@
         <option value="yellow">yellow</option>
         <option value="gray">gray</option>
     </select>
+    <button type="button" class="btn btn-primary" onclick="javascript:clipCanvas();return false;">pictureCut</button>
     </div>
 </div> 
 <script>
     var mousePressed = false;
 var lastX, lastY;
 var ctx;
- 
+var canvas = document.getElementById('myCanvas');
 function InitThis() {
     ctx = document.getElementById('myCanvas').getContext("2d");
  
@@ -240,8 +318,17 @@ function clearArea() {
     ctx.setTransform(1, 0, 0, 1, 0, 0);
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 }  
+function clipCanvas(){
+	 var image = canvas.toDataURL("image/png");  
+     var w=window.open('about:blank','image from canvas');  
+     w.document.write("<img src='"+image+"' alt='from canvas'/>"); 
+     console.log(image.substr(22))
+    /*var image = new Image(); 
+	 image.src = canvas.toDataURL("image/png"); */
+}
 $(function(){
     InitThis();
+    
 })
 </script>        
 	</div>
@@ -327,10 +414,27 @@ function shadow(){
    
   }
 }
+//贝塞尔曲线
+function Beisaier(){
+	var canvas = document.getElementById('Beisaier')
+	var ctx = canvas.getContext('2d');
+    
+    //三次曲线
+    ctx.beginPath();
+    ctx.moveTo(75,40);
+    ctx.bezierCurveTo(75,37,70,25,50,25);
+    ctx.bezierCurveTo(20,25,20,62.5,20,62.5);
+    ctx.bezierCurveTo(20,80,40,102,75,120);
+    ctx.bezierCurveTo(110,102,130,80,130,62.5);
+    ctx.bezierCurveTo(130,62.5,130,25,100,25);
+    ctx.bezierCurveTo(85,25,75,37,75,40);
+    ctx.fill();
+}
 		window.onload=function(){
 			SevenColor();
 			changeColor();
 			shadow();
+			Beisaier();
 		}
 	</script>
 </body>
