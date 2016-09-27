@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>粒子</title>
+</head>
+<style type="text/css">
+    body {
+      background-color: #000000;
+      margin: 0px;
+      overflow: hidden;
+    }
+   </style>
+<body>
+<canvas id="canvas"></canvas>
+<script>
+	var canvas = document.getElementById('canvas');
+	var ctx = canvas.getContext('2d');
+	canvas.width=window.innerWidth;
+    canvas.height=window.innerHeight;
+	var cWidth = canvas.width,
+		cHeight = canvas.height;
+
+	init();
+	//初始化一个数组
+	var particles =[];
+	var colorList = ["#FFFF99","#B5FF91","#94DBFF","#FFBAFF","#FFBD9D","#C7A3ED","#CC9898","#8AC007","#CCC007","#FFAD5C"];
+
+	function init(){
+		setInterval(loop,30)
+	}
+
+
+
+	function loop(){
+		//ctx.clearRect(0,0,cWidth,cHeight);
+		ctx.fillStyle = "rgba(0,0,0,1)";
+   		ctx.fillRect(0,0, cWidth, cHeight);
+
+		var particle = new Particle(cWidth/2,cHeight/2);
+		 particle.xVel = Math.random()*4-2;//注意这里啦，给粒子一个水平位置变化量
+		 particle.colorIndex = Math.floor(Math.random()*colorList.length);//随机颜色
+
+		particles.push(particle);
+		//绘制数组中的每一个粒子
+		for(i=0;i<particles.length;i++){
+			var particle = particles[i];
+			particle.render(ctx);
+			particle.update(); 
+		}
+		if (particles.length>1000){//只保留20个粒子
+     		particles.shift();
+    	}
+
+
+	}
+	function Particle(xPos,yPos){
+		this.xPos = xPos;
+		this.yPos = yPos;
+		this.yVel = -10;
+		this.xVel = 0;
+		this.yg = -0.2;
+		this.colorIndex = 0;
+
+		this.render = function(e){
+			e.fillStyle=colorList[this.colorIndex ]
+			e.beginPath();
+			e.arc(this.xPos, this.yPos,5,0,Math.PI*2,true);
+			e.fill();
+		}
+		this.update=function(){
+			this.yVel += this.yg
+			this.yPos += this.yVel;
+			 this.xPos += this.xVel;
+		}
+		
+	}
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>粒子</title>
+</head>
+<style type="text/css">
+    body {
+      background-color: #000000;
+      margin: 0px;
+      overflow: hidden;
+    }
+   </style>
+<body>
+<canvas id="canvas"></canvas>
+<script>
+	var canvas = document.getElementById('canvas'),
+    ctx = canvas.getContext('2d');
+    canvas.width=window.innerWidth;
+    canvas.height=window.innerHeight;
+	var cWidth = canvas.width,
+    cHeight = canvas.height;
+    var particles =[];
+    //粒子类
+  	function Particle (xPos, yPos) { 
+    	this.xPos = xPos;//中心X坐标
+    	this.yPos = yPos; //中心Y坐标
+
+    	this.render = function(c){
+      		c.fillStyle = "rgba(255,255,255, 1)";
+      		c.beginPath();
+      		c.arc(this.xPos, this.yPos, 20, 0, Math.PI*2, true);
+      		c.fill(); 
+   		}
+	}
+	function loop(){ 
+  		// 清除canvas中的内容 
+  		ctx.clearRect(0,0,cWidth,cHeight);
+
+   		//随机产生一个粒子
+   		var particle = new Particle(Math.random()*cWidth, Math.random()*cHeight);
+   		particles.push(particle); //加入数组
+
+   		// 绘制数组中的每一个粒子
+   		for (i=0; i<particles.length; i++) {
+    		var particle = particles[i]; 
+    		particle.render(ctx); 
+  		}
+  		if (particles.length>20){//只保留20个粒子
+     		particles.shift();
+    	}
+  	}
+	
+init();
+function init(){
+	setInterval(loop,30)
+}
+</script>
+
+</body>
+</html>

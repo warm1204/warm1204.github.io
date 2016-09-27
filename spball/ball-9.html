@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>粒子</title>
+</head>
+<style type="text/css">
+    body {
+      background-color: #000000;
+      margin: 0px;
+      overflow: hidden;
+    }
+   </style>
+<body>
+<canvas id="canvas"></canvas>
+
+<script>
+	var canvas = document.getElementById('canvas');
+	var ctx = canvas.getContext('2d');
+	canvas.width=window.innerWidth;
+    canvas.height=window.innerHeight;
+	var cWidth = canvas.width,
+		cHeight = canvas.height;
+	var numPar = 10,
+		radius = 20;
+
+	init();
+	//初始化一个数组
+	var particles =[];
+	var colorList = ["#FFFF99","#B5FF91","#94DBFF","#FFBAFF","#FFBD9D","#C7A3ED","#CC9898","#8AC007","#CCC007","#FFAD5C"];
+
+
+
+	function selectfrom (lowValue,highValue){
+		var choice=highValue-lowValue+1;
+		return Math.floor(Math.random()*choice+lowValue);
+	}
+
+
+	for(i=0;i<numPar;i++){
+		var particle = new Particle(selectfrom(40,(cWidth-40)),selectfrom(40,(cHeight-40)));
+
+			particles.push(particle);
+			particle.init();
+
+	}
+
+	function init(){
+
+		//setInterval(loop,60)
+		requestAnimationFrame(loop)
+
+
+	}
+	function loop(){
+		//ctx.clearRect(0,0,cWidth,cHeight);
+		ctx.fillStyle = "rgba(0,0,0,1)";
+   		ctx.fillRect(0,0, cWidth, cHeight);
+		//绘制数组中的每一个粒子
+		for(i=0;i<particles.length;i++){
+			var particle = particles[i];
+			particle.update();
+			particle.render(ctx);//绘制
+			collide(particles[i],i);
+		}
+
+		requestAnimationFrame(loop)
+	}
+
+	function Particle(xPos,yPos){
+		this.xPos = xPos;
+		this.yPos = yPos;
+		this.yVel = 0;
+		this.xVel = 0;
+		this.yg = 0.2;
+		this.colorIndex = 0;
+
+		this.init = function(){
+			this.yVel =  Math.random()*10-5;
+			this.xVel = Math.random()*10-2;//
+			this.colorIndex = Math.floor(Math.random()*colorList.length);
+		}
+
+		this.render = function(e){
+			e.fillStyle=colorList[this.colorIndex ]
+			e.beginPath();
+			e.arc(this.xPos, this.yPos,radius,0,Math.PI*2,true);
+			e.fill();
+		}
+
+		this.update=function(){
+			this.collideWalls();
+		}
+
+	}
+	//墙壁碰撞
+	Particle.prototype.collideWalls = function(){
+		 if(this.xPos < radius || this.xPos>(cWidth-radius)){
+				this.xVel = -this.xVel;
+		}
+		if(this.yPos < radius || this.yPos >(cHeight-radius)){
+					this.yVel = -this.yVel
+		}
+		this.yPos += this.yVel;
+		this.xPos += this.xVel;
+
+	}
+	//碰撞检测
+	function collide(particleA,i){
+		for(var particleB,j = i+1;j<numPar;j++){
+			particleB = particles[j];
+			dx = particleB.xPos- particleA.xPos ;
+			dy = particleB.yPos- particleA.yPos ;
+			dist = Math.sqrt(dx * dx + dy * dy);
+			min_dist = radius*2;
+			if(dist < min_dist){
+				particleA.xVel *= -1
+				particleA.yVel *= -1
+				particleB.xVel *= -1
+				particleB.yVel *= -1
+			}
+
+		}
+
+	}
+
+	/*function collide(){
+		for(var i=0;i<particles.length;i++){
+			collideWalls(particles[i])
+		}
+	}
+	function collideWalls(obj){
+		if(obj.xPos < 25 || obj.xPos>(cWidth-25)){
+			obj.xPos -= xVel;
+		}
+		if(obj.yPos < 25 || obj.yPos >(cHeight-25)){
+			obj.yPos -= yVel
+		}
+	}*/
+
+
+</script>
+
+</body>
+</html>
