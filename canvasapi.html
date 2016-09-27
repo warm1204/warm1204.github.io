@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas API</title>
+	<script src="http://acen.jd.com/h5/topActivity/media/js/lib/zepto-1.1.6.min.js"></script>
+	<style>
+	.wrapper{width: 1000px;margin: 0 auto}
+	p{font-size: 20px;line-height: 1.5;color: #333333}
+	pre{background: #f7f7f9;height: 100%;line-height: 2;font-size: 20px;color: #333333}
+	h2{font-size: 34px}
+	h3{font-weight: bold;font-size: 26px}
+	#sevenb{width: 300px;height: 300px;}
+	#changec{width: 300px;height: 300px;}
+	</style>
+</head>
+<body>
+	<div class="nav"></div>
+	<div class="wrapper">
+		<h2>准备</h2>
+		<h3>一.width和height</h3>
+		<pre><code> &lt;canvas id="myCanvas" width="666" height="666" &gt; &lt;/canvas&gt; </code></pre>
+		<p>
+			这里的width和height指实际像素宽高，我们也可以理解为是canvas的分辨率，按标准不带单位， <strong>与在css里面定义是两种东西：</strong>
+		</p>
+		<p>1.从js来看</p>
+		<pre><code>
+	canvas.width=666;
+	canvas.height=666;
+	canvas.style.width="666px"
+	canvas.style.height="666px 
+	</code></pre>
+		<p>2.从html来看</p>
+		<pre><code>
+	&lt;canvas id = "myCanvas" width="300" height="300"&gt;&lt;/canvas&gt;
+	&lt;canvas id = "myCanvas" style="width:300px;height:300px"&gt;&lt;/canvas&gt;
+	</pre>
+	</code>
+	<p>上面的代码画出来的效果如下：</p>
+	<p>
+		<img src="http://warm1204.github.io/image/canvasWidth.png" alt=""></p>
+	<p>3.总结</p>
+	<pre><code>
+	&lt;canvas width="300" height="300" style="width:100px;height="100px"&gt;
+	</pre>
+</code>
+<p>
+	实际上是把一个300x300的canvas画布强制缩放成100px*100px了。canvas本身有一个默认的width和height，一般是300x150
+</p>
+<br>
+<h3>二.beginPath和closePath</h3>
+<p>beginPath和closePath是绘图过程中必不可少的两个东西，他们完全没有关系</p>
+<br>
+<p>beginPath方法类似于开启新的路径绘画或清空已有路径,会以最接近的上一个beginPath为起点渲染下面的所有绘图</p>
+<pre><code>
+    context.beginPath()
+	context.moveTo(100,100)
+	context.lineTo(700,700)
+	context.strokeStyle = "#005588"
+	context.stroke()
+    //context.beginPath()
+	context.moveTo(200,200)
+	context.lineTo(800,800)
+	context.strokeStyle = "#ff6567"
+	context.stroke()
+    </code></pre>
+<br>
+<p>
+	closePath： 
+	并不是表示结束，它的意思是关闭路径，就是从当前路径的终点连一条路径到起点，让整个路径闭合起来。但是如果没有它，用了fill()内部色填充，也是会如期把可能的闭合路径填上内部色。
+</p>
+<p>就是说下面的两段代码是一个效果。</p>
+<pre><code>
+	//eg1
+	context.moveTo(100,100)
+	context.lineTo(700,700)
+	context.lineTo(100,700)
+	context.closePath()
+	//eg2
+	context.moveTo(100,100)
+	context.lineTo(700,700)
+	context.lineTo(100,700)
+	context.lineTo(100,100)
+	</code></pre>
+<br>
+<p>综上beginPath和closePath其实是没有关系的~</p>
+<h2>一.基本图形</h2>
+<h3>线</h3>
+<p>绘制一条从当前未知到指定x以及y位置的直线</p>
+<pre><code>lineTo(x,y)</code></pre>
+<p>这里的x和y是代表结束的点坐标，开始点与之前绘制的路径有光，也可以通过moveTo()来改变。</p>
+<br>
+
+<h3>矩形</h3>
+<p>绘制一个填充的矩形，，注意在使用fillRect绘制矩形时，必须先设置各种样式，否则样式无效（代码顺序 ）</p>
+<pre><code>fillRect(x,y,width,height)</code></pre>
+<br>
+<p>绘制一个矩形边框</p>
+<pre><code>strokeRect(x,y,width,height)</code></pre>
+<br>
+<p>清除矩形区域</p>
+<pre><code>clearRect(x,y,width,height)</code></pre>
+<p>以上xy均指在canvas画布上离左上角原点的坐标</p>
+<br>
+<h3>圆弧</h3>
+<p>arc(圆心坐标，圆心坐标，半径的值，弧线开始于哪个弧度值，结束于哪个弧度值，顺时针或逆时针false为顺时针可选参数)</p>
+<p>0pi在正东方向</p>
+<p> <strong>注意：arc()函数中的角度单位是弧度，不是度数。</strong>
+</p>
+<br>
+<h3>贝塞尔曲线</h3>
+<p>
+	绘制二次贝塞尔曲线，x,y为结束点；cp1x,cp1y为控制点，用于决定该曲线的形状。这个方法所绘制的贝塞尔曲线会将锚点与当前路径最后一个点连接起来。
+</p>
+<pre><code>quadraticCurveTo(cp1x,cp1y,x,y)</code></pre>
+<br>
+<p>绘制三次贝塞尔曲线，x,y为结束点，cp1x,cp1y为控制点一，cp2x,cp2y为控制点2</p>
+<pre><code>bezierCurveTo(cp1x,cp1y,cp2x,cp2y,x,y))</code></pre>
+<br>
+<canvas id="Beisaier"></canvas>
+<h2>二.样式</h2>
+<h3>colors</h3>
+<p>设置图形的填充颜色</p>
+<pre><code>fillStyle = color</code></pre>
+<br>
+<p>设置图形轮廓的颜色</p>
+<pre><code>strokeStyle = color</code></pre>
+<p>这两个属性除了可以应用颜色外，也可以被设置为渐变色或者图案</p>
+<br>
+<p>应用例子：七巧板</p>
+<canvas id="sevenb" ></canvas>
+<br>
+<p>应用例子：调色板</p>
+<canvas id="changec" ></canvas>
+<script></script>
+<br>
+<h3>透明度ransparency</h3>
+<pre><code>fillStyle = "rgba(255,0,0,0.5)"</code></pre>
+<pre><code>strokeStyle= "rgba(255,0,0,0.5)</code></pre>
+<br>
+<p>globalAlpha属性（0~1.0）</p>
+<pre><code>context.globalAlpha = 0.2</code></pre>
+<br>
+<h3>渐变</h3>
+<p>创建线性渐变，表示渐变线的两个端点。可以通过addColorStop()方法来向该渐变线增加颜色停止点。</p>
+<pre><code>crearLinearGradient(x1,y1,x2,y2)</code></pre>
+<br>
+<p>创建放射渐变，参数表示位于圆锥形渐变区域两端的圆形。</p>
+<pre><code>createRadialGradient(x1,y1,r1,x2,y2,r2)</code></pre>
+<br>
+<h3>阴影</h3>
+<p>canvas中的阴影主要为以下4个属性所控制：</p>
+<p>1.shadowColor:css3格式的颜色；</p>
+<p>2.shadowOffsetX:从图形或者文本到阴影的水平像素偏移，可为负整数</p>
+<p>3.shadowOffsetY</p>
+<p>4.shadowBlur：与像素无关，用于设定阴影的模糊程度，也不受变换矩阵的影响，默认为 0</p>
+<br>
+<canvas id="Shadow"></canvas>
+<h2>三.文本</h2>
+<p>文本的填充</p>
+<pre><code>fillText(text,x,y,[可选]最大宽度)</code></pre>
+<br>
+<p>绘制文本边框</p>
+<pre><code>strokeText(text,x,y，[可选]最大宽度) </code></pre>
+<br>
+<p>样式：</p>
+<pre><code>context.font="10px sans-serif" //默认值，字体大小和字体类型，必填</code></pre>
+<pre><code>textAlign = value 
+	//基线水平对齐选项. 可选的值包括：start,left,center,right,end。默认值是 start</code></pre>
+<pre><code>textBaseline = value  
+	//基线竖直对齐选项. 可选的值包括：
+	top, hanging, middle, alphabetic, ideographic, bottom。默认值是 alphabetic</code></pre>
+<pre><code>direction = value 
+	//文本方向。可能的值包括：ltr, rtl, inherit。默认值是 inherit。</code></pre>
+<br>
+<pre><code>measureText(text)</code></pre>
+<br>
+<h2>四.图案</h2>
+<p>fillStyle和strokeStyle除了可用渐变色和颜色，还可以用图案来描边或者填充</p>
+<br>
+<pre><code>creatPattern(image,type)</code></pre>
+<p>
+	type可取以下值：repeat ,repeat-x,repeat-y,no-repeat,道理同css里的background，用法跟渐变很类似的，创建出一个 pattern 之后，赋给 fillStyle 或 strokeStyle 属性即可
+</p>
+<pre><code>var img = new Image(); img.src = 'someimage.png';var ptrn = context.createPattern(img,'repeat'); </code></pre>
+<br>
+<p>Image()函数</p>
+<pre><code>
+	var img = new Image();
+    img.onload=function(){
+      	ctx.drawImage(img,50,50,51,51)
+    }
+    img.src = 'redball.png'
+    //img.src="Base64"
+    </code></pre>
+<br>
+<h2>五.其他</h2>
+<h3>save()&restore()</h3>
+<p>
+	save 和 restore 方法是用来保存和恢复 canvas 状态的，都没有参数。Canvas 的状态就是当前画面应用的所有样式和变形的一个快照。
+</p>
+<p>
+	Canvas状态存储在栈中，每当save()方法被调用后，当前的状态就被推送到栈中保存，可以任意次使用save(),每一次调用 restore 方法，上一个保存的状态就从栈中弹出，所有设定都恢复。
+</p>
+<pre><code>context.save();context.restore();</code></pre>
+<br>
+<h3>globalCompositeOperation</h3>
+<pre><code>globalCompositeOperation = type</code></pre>
+<p>type有12种取值，比如以下：</p>
+<p>source-over ：默认，新图形覆盖在原有图形之上</p>
+<p>destination-over：与上面相反</p>
+<p>source-in：仅出现新图形中与老图形重叠的部分，其余透明</p>
+<p>source-atop：新图形中与原有内容重叠的部分会被绘制，并覆盖于原有内容之上。</p>
+<p>copy：新图形会被保留，其余清除</p>
+<p>...</p>
+<br>
+<h3>Clipping paths</h3>
+<pre><code>clip():用法与stroke()和fill() 类似</code></pre>
+<pre><code>
+   	ctx.beginPath();
+  	ctx.arc(0,0,60,0,Math.PI*2,true);
+  	ctx.clip();
+  	</code></pre>
+<br>
+<h3>getImageData()& putImageData</h3>
+<p>getImageData() 方法返回 ImageData 对象，该对象拷贝了画布指定矩形的像素数据。</p>
+<pre><code>context.getImageData(x,y,width,height);</code></pre>
+<br>
+<p>putImageData(imgData,x,y):把getImageData()得到的像素数据展现出来</p>
+<br>
+<p>demo:</p>
+<img id="scream" src="http://warm1204.github.io/image/people.jpg">
+<canvas id="getImage" width="390" height="480"></canvas>
+<script>
+		document.getElementById("scream").onload=function(){
+  var c=document.getElementById("getImage");
+  var ctx=c.getContext("2d");
+  var img=document.getElementById("scream");
+  ctx.drawImage(img,0,0);
+  var imgData=ctx.getImageData(0,0,c.width,c.height);
+  // invert colors
+  for (var i=0;i<imgData.data.length;i+=4)
+    {
+    imgData.data[i]=255-imgData.data[i];
+    imgData.data[i+1]=255-imgData.data[i+1];
+    imgData.data[i+2]=255-imgData.data[i+2];
+    imgData.data[i+3]=255;
+    }
+  ctx.putImageData(imgData,0,0);
+}
+	</script>
+
+<br>
+<h3>canvas.toDataURL(MIME)</h3>
+<p>
+上面介绍了把图片导入／转化为canvas，那么canvas画布也可以转为图片，需要一个toDataURL()方法,因为在canvas中绘出的图片只是canvas标签而已，并非是真正的图片，是不能右键另存为的
+</p>
+<pre><code>
+	var image = new Image(); 
+	image.src = canvas.toDataURL("image/png");
+	</code></pre>
+<p>canvas.toDataURL 返回的是一串Base64编码的URL</p>
+<br>
+<br>
+<p>demo:简易画板</p>
+<div align="center">
+<canvas id="myCanvas" width="500" height="400" style="border:2px solid #6699cc"></canvas>
+<div class="control-ops">
+	<button type="button" class="btn btn-primary" onclick="javascript:clearArea();return false;">清空画板</button>
+	Line width :
+	<select id="selWidth">
+		<option value="1">1</option>
+		<option value="3">3</option>
+		<option value="5">5</option>
+		<option value="7">7</option>
+		<option value="9" selected="selected">9</option>
+		<option value="11">11</option>
+	</select>
+	Color :
+	<select id="selColor">
+		<option value="black">black</option>
+		<option value="blue" selected="selected">blue</option>
+		<option value="red">red</option>
+		<option value="green">green</option>
+		<option value="yellow">yellow</option>
+		<option value="gray">gray</option>
+	</select>
+	<button type="button" class="btn btn-primary" onclick="javascript:clipCanvas();return false;">pictureCut</button>
+</div>
+</div>
+<script>
+    var mousePressed = false;
+var lastX, lastY;
+var ctx;
+var canvas = document.getElementById('myCanvas');
+function InitThis() {
+    ctx = document.getElementById('myCanvas').getContext("2d");
+ 
+    $('#myCanvas').mousedown(function (e) {
+        mousePressed = true;
+        Draw(e.pageX - $(this).offset().left, e.pageY - $(this).offset().top, false);
+    });
+ 
+    $('#myCanvas').mousemove(function (e) {
+        if (mousePressed) {
+            Draw(e.pageX - $(this).offset().left, e.pageY - $(this).offset().top, true);
+        }
+    });
+ 
+    $('#myCanvas').mouseup(function (e) {
+        mousePressed = false;
+    });
+        $('#myCanvas').mouseleave(function (e) {
+        mousePressed = false;
+    });
+}
+ 
+function Draw(x, y, isDown) {
+    if (isDown) {
+        ctx.beginPath();
+        ctx.strokeStyle = $('#selColor').val();
+        ctx.lineWidth = $('#selWidth').val();
+        ctx.lineJoin = "round";
+        ctx.moveTo(lastX, lastY);
+        ctx.lineTo(x, y);
+        ctx.closePath();
+        ctx.stroke();
+    }
+    lastX = x; lastY = y;
+}
+     
+function clearArea() {
+    // Use the identity matrix while clearing the canvas
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+}  
+function clipCanvas(){
+	 var image = canvas.toDataURL("image/png");  
+     var w=window.open('about:blank','image from canvas');  
+     w.document.write("<img src='"+image+"' alt='from canvas'/>"); 
+     console.log(image.substr(22))
+    /*var image = new Image(); 
+	 image.src = canvas.toDataURL("image/png"); */
+}
+$(function(){
+    InitThis();
+    
+})
+</script>
+</div>
+<script>
+//七巧板
+var tangram=[
+		{p:[{x:0,y:0},{x:800,y:0},{x:400,y:400}],color:"#caff67"},
+		{p:[{x:0,y:0},{x:400,y:400},{x:0,y:800}],color:"#67beef"},
+		{p:[{x:800,y:0},{x:800,y:400},{x:600,y:600},{x:600,y:200}],color:"#cf3d61"},
+		{p:[{x:600,y:200},{x:600,y:600},{x:400,y:400}],color:"#f9f51a"},
+		{p:[{x:400,y:400},{x:600,y:600},{x:400,y:800},{x:200,y:600}],color:"#a594c0"},
+		{p:[{x:200,y:600},{x:400,y:800},{x:0,y:800}],color:"#fa8ccc"},
+		{p:[{x:800,y:400},{x:800,y:800},{x:400,y:800}],color:"#f6ca29"},
+
+]
+		function SevenColor(){
+			var cvs = document.getElementById('sevenb');
+			var context = cvs.getContext('2d');
+			cvs.width = 800;
+			cvs.height = 800;
+			for(var i = 0 ;i < tangram.length;i++){
+				draw(tangram[i],context)
+			}
+			function draw(piece,cxt){
+				cxt.beginPath();
+				cxt.moveTo(piece.p[0].x,piece.p[0].y);
+				for(var i=1;i<piece.p.length;i++){
+					cxt.lineTo(piece.p[i].x, piece.p[i].y);
+					/*cxt.closePath();beginPath方法类似于开启新的路径绘画或清空已有路径 
+
+					而closePath并不是用来表示结束 而是功能性的 做图形闭合处理（从最后的状态点自动lineTo回归起始点封口）				
+					所以加上这句七巧板会被分割更多块*/
+				}
+
+				cxt.fillStyle = piece.color;
+				cxt.fill();
+				cxt.lineWidth =3;
+				cxt.stroke();
+
+			}
+		}
+		//调色板
+		function changeColor(){
+			var cvs = document.getElementById('changec');
+			var ctx = cvs.getContext('2d');
+			cvs.width = 600;
+			cvs.height = 600;
+  			for (var i=0;i<6;i++){
+    			for (var j=0;j<6;j++){
+      				ctx.fillStyle = 'rgb(' + Math.floor(255-42.5*i) + ',' + 
+                    Math.floor(255-42.5*j) + ',0)';
+      				ctx.fillRect(j*100,i*100,100,100);
+    			}
+  			}
+		}
+//阴影
+function shadow(){
+	var cvs = document.getElementById('Shadow');
+	cvs.width = 400;
+			cvs.height = 400;
+		   function wshadow(){
+		   	ctx.beginPath();
+    	 ctx.shadowOffsetX = 10;
+  ctx.shadowOffsetY = 10;
+  ctx.shadowBlur = 10;
+  ctx.shadowColor = "rgba(0, 0, 0, 0.5)";
+    ctx.fillStyle="rgba(255,0,0,0.5)";
+    ctx.fillRect(10,10,100,100);
+    }
+      function nshadow(){
+      	ctx.beginPath();
+    	 ctx.shadowOffsetX = -10;
+  ctx.shadowOffsetY = -10;
+  ctx.shadowBlur = 10;
+  ctx.shadowColor = "rgba(0, 0, 0, 0.5)";
+    ctx.fillStyle="rgba(255,0,0,0.5)";
+    ctx.fillRect(10,210,100,100);
+    }
+  if (cvs.getContext){
+    var ctx = cvs.getContext('2d');
+    wshadow()
+   nshadow()
+   
+  }
+}
+//贝塞尔曲线
+function Beisaier(){
+	var canvas = document.getElementById('Beisaier')
+	var ctx = canvas.getContext('2d');
+    
+    //三次曲线
+    ctx.beginPath();
+    ctx.moveTo(75,40);
+    ctx.bezierCurveTo(75,37,70,25,50,25);
+    ctx.bezierCurveTo(20,25,20,62.5,20,62.5);
+    ctx.bezierCurveTo(20,80,40,102,75,120);
+    ctx.bezierCurveTo(110,102,130,80,130,62.5);
+    ctx.bezierCurveTo(130,62.5,130,25,100,25);
+    ctx.bezierCurveTo(85,25,75,37,75,40);
+    ctx.fill();
+}
+		window.onload=function(){
+			SevenColor();
+			changeColor();
+			shadow();
+			Beisaier();
+		}
+	</script></body>
+</html>
