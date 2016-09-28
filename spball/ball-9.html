@@ -25,7 +25,6 @@
 		radius = 20;
 
 	init();
-	//初始化一个数组
 	var particles =[];
 	var colorList = ["#FFFF99","#B5FF91","#94DBFF","#FFBAFF","#FFBD9D","#C7A3ED","#CC9898","#8AC007","#CCC007","#FFAD5C"];
 
@@ -39,28 +38,19 @@
 
 	for(i=0;i<numPar;i++){
 		var particle = new Particle(selectfrom(40,(cWidth-40)),selectfrom(40,(cHeight-40)));
-
 			particles.push(particle);
 			particle.init();
-
 	}
-
 	function init(){
-
-		//setInterval(loop,60)
 		requestAnimationFrame(loop)
-
-
 	}
 	function loop(){
-		//ctx.clearRect(0,0,cWidth,cHeight);
 		ctx.fillStyle = "rgba(0,0,0,1)";
    		ctx.fillRect(0,0, cWidth, cHeight);
-		//绘制数组中的每一个粒子
 		for(i=0;i<particles.length;i++){
 			var particle = particles[i];
 			particle.update();
-			particle.render(ctx);//绘制
+			particle.render(ctx);
 			collide(particles[i],i);
 		}
 
@@ -77,7 +67,7 @@
 
 		this.init = function(){
 			this.yVel =  Math.random()*10-5;
-			this.xVel = Math.random()*10-2;//
+			this.xVel = Math.random()*10-2;
 			this.colorIndex = Math.floor(Math.random()*colorList.length);
 		}
 
@@ -93,7 +83,6 @@
 		}
 
 	}
-	//墙壁碰撞
 	Particle.prototype.collideWalls = function(){
 		 if(this.xPos < radius || this.xPos>(cWidth-radius)){
 				this.xVel = -this.xVel;
@@ -105,7 +94,6 @@
 		this.xPos += this.xVel;
 
 	}
-	//碰撞检测
 	function collide(particleA,i){
 		for(var particleB,j = i+1;j<numPar;j++){
 			particleB = particles[j];
@@ -123,22 +111,6 @@
 		}
 
 	}
-
-	/*function collide(){
-		for(var i=0;i<particles.length;i++){
-			collideWalls(particles[i])
-		}
-	}
-	function collideWalls(obj){
-		if(obj.xPos < 25 || obj.xPos>(cWidth-25)){
-			obj.xPos -= xVel;
-		}
-		if(obj.yPos < 25 || obj.yPos >(cHeight-25)){
-			obj.yPos -= yVel
-		}
-	}*/
-
-
 </script>
 
 </body>

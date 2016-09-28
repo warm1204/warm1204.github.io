@@ -21,13 +21,11 @@
 	var cWidth = canvas.width,
 		cHeight = canvas.height,
 		z = 0.2;
-	//初始化一个数组
 	var particles =[];
 	var colorList = ["#FFFF99","#B5FF91","#94DBFF","#FFBAFF","#FFBD9D","#C7A3ED","#CC9898","#8AC007","#CCC007","#FFAD5C"];
 
 	requestAnimationFrame(loop);
 	function loop(){
-		//ctx.clearRect(0,0,cWidth,cHeight);
 		ctx.fillStyle = "rgba(0,0,0,1)";
    		ctx.fillRect(0,0, cWidth, cHeight);
    		drawParticle()
@@ -43,11 +41,9 @@
 		this.num = 6;
 		this.colorIndex = Math.floor(Math.random()*colorList.length);;
 		this.scale= 1;
-		//this.opacity = 1;
 		this.render = function(e){
 			e.fillStyle=colorList[this.colorIndex ]
 			e.beginPath();
-			//e.scale(this.scale,this.scale)
 			e.arc(this.xPos, this.yPos,this.num,0,Math.PI*2,true);
 			e.fill();
 		}
@@ -62,12 +58,6 @@
 			}else{
 				this.num = 0
 			}
-			
-		
-			//this.scale -= 1/1+z;
-			//this.scaleX = 0.9;
-			//ctx.scale(this.scaleX,this.scaleY)
-
 
 		}
 		
@@ -76,14 +66,13 @@
 		var particle = new Particle(cWidth/2,cHeight/2);
 
 		particles.push(particle);
-		//绘制数组中的每一个粒子
 		for(i=0;i<particles.length;i++){
 			var particle = particles[i];
 			particle.update();
 			particle.render(ctx);
 			 
 		}
-		if (particles.length>1000){//只保留20个粒子
+		if (particles.length>1000){
      		particles.shift();
     	}
 

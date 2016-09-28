@@ -20,9 +20,7 @@
     canvas.height=window.innerHeight;
 	var cWidth = canvas.width,
 		cHeight = canvas.height;
-
 	init();
-	//初始化一个数组
 	var particles =[];
 	var colorList = ["#FFFF99","#B5FF91","#94DBFF","#FFBAFF","#FFBD9D","#C7A3ED","#CC9898","#8AC007","#CCC007","#FFAD5C"];
 
@@ -33,25 +31,19 @@
 
 
 	function loop(){
-		//ctx.clearRect(0,0,cWidth,cHeight);
 		ctx.fillStyle = "rgba(0,0,0,1)";
    		ctx.fillRect(0,0, cWidth, cHeight);
-
 		var particle = new Particle(cWidth/2,cHeight/2);
-
 		particles.push(particle);
 		particle.init();
-		//绘制数组中的每一个粒子
 		for(i=0;i<particles.length;i++){
 			var particle = particles[i];
 			particle.render(ctx);
 			particle.update(); 
 		}
-		if (particles.length>1000){//只保留1000个粒子
+		if (particles.length>1000){
      		particles.shift();
     	}
-
-
 	}
 	function Particle(xPos,yPos){
 		this.xPos = xPos;

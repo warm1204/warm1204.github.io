@@ -22,7 +22,6 @@
 		cHeight = canvas.height;
 
 	init();
-	//初始化一个数组
 	var particles =[];
 	var colorList = ["#FFFF99","#B5FF91","#94DBFF","#FFBAFF","#FFBD9D","#C7A3ED","#CC9898","#8AC007","#CCC007","#FFAD5C"];
 
@@ -39,18 +38,12 @@
 
 
 	function loop(){
-		//ctx.clearRect(0,0,cWidth,cHeight);
 		ctx.fillStyle = "rgba(0,0,0,1)";
    		ctx.fillRect(0,0, cWidth, cHeight);
 
 		var particle = new Particle(selectfrom(40,(cWidth-40)),selectfrom(40,(cHeight-40)));
 		particles.push(particle);
-
-		particle.init();
-		
-
-		
-		//绘制数组中的每一个粒子
+		particle.init();				
 		for(i=0;i<50;i++){
 			var particle = particles[i];
 			particle.render(ctx);//绘制
@@ -66,7 +59,6 @@
 		this.xVel = 0;
 		this.yg = 0.2;
 		this.colorIndex = 0;
-
 		this.init = function(){
 			this.yVel =  Math.random()*10-5;
 			this.xVel = Math.random()*10-2;//
@@ -81,10 +73,6 @@
 		}
 
 		this.update=function(){	
-			//坐标		
-			/*this.yPos += this.yVel;
-			 this.xPos += this.xVel;*/	
-			 //碰撞检测
 			 if(this.xPos < 20 || this.xPos>(cWidth-20)){
 				this.xVel = -this.xVel;
 				}
