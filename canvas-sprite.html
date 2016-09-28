@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas粒子系统</title>
+	<style>
+	a{font-size: 18px;}
+	.wrapper{width: 1000px;margin: 0 auto}
+	p{font-size: 18px;line-height: 1.5;color: #333333}
+	pre{background: #f7f7f9;height: 100%;line-height: 1.5;font-size: 20px;color: #333333}
+	h2{font-size: 30px}
+	h3{font-weight: bold;font-size: 22px}
+	#sevenb{width: 300px;height: 300px;}
+	#changec{width: 300px;height: 300px;}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<h2>一.准备</h2>
+		<p>粒子系统说到底就是粒子从发射到消失的过程，魅力在于这个过程中有着千变万化的美丽</p>
+		<h3>首先来分析下，粒子系统涉及的方面：</h3>
+		<p>1.发射速度：每个粒子的速度、方向、角度;</p>
+		<p>2.发射区域：定点发射（写死在某一处或这根据鼠标定点）,还是某个区域随机发射;</p>
+		<p>3.重力：不同场景下的重力情况，比如地球重力及太空失重;</p>
+		<p>4.粒子的类型：粒子是怎么的粒子，简单的圆形或是五角星，烟雾或者激光</p>
+		<p>5.粒子的样式：颜色、透明度…</p>
+		<p>6.发射的频率：每次发射的时间间隔，每次发射的粒子数量…</p>
+		<p>基于以上六点，每一样都可以延伸出很多变化，这就是粒子系统的多样化。</p>
+
+		<h2>程序梳理</h2>
+		<p>那么怎么建一个基本的粒子系统?</p>
+		<p>1.canvas上下文和基本参数</p>
+		<pre><code>
+	var canvas = document.getElementById('canvas'),
+	ctx = canvas.getContext('2d');
+	canvas.width=window.innerWidth;
+	canvas.height=window.innerHeight;
+	var cWidth = canvas.width,
+	cHeight = canvas.height;
+		</code></pre>
+		<p>2.画一个粒子</p>
+		<pre><code>
+	function drawParticle(xPos,yPos){
+    		ctx.fillStyle = "rgba(0, 0, 0, 1)"; 
+    		ctx.beginPath();
+    		ctx.arc(xPos,yPos,20,0,Math.PI*2,true);
+    		ctx.fill();
+	}
+		</code></pre>
+		<p>3.画随机位置的很多粒子</p>
+		<pre><code>
+	//粒子类
+	function Particle (xPos, yPos) { 
+   		this.xPos = xPos;
+   		this.yPos = yPos;
+     		ctx.fillStyle = "rgba(0, 0, 0, 1)";   
+   		ctx.beginPath();
+   		ctx.arc(this.xPos, this.yPos, 20, 0, Math.PI*2, true);
+   		ctx.fill();
+  	}
+	functions loop(){
+		//在一些随机位置产生并画粒子。
+   		var particle = new Particle(Math.random()*cWidth, Math.random()*cHeight);
+	}	
+		</code></pre>
+		<p>4.把所有粒子存起来，方便操作</p>
+		<pre><code>
+	//初始化一个数组
+	var particles =[];
+	function loop(){ 
+		// 清除canvas中的内容 
+		ctx.clearRect(0,0,cWidth,cHeight);
+		//随机产生一个粒子
+		var particle = new Particle(Math.random()*cWidth, Math.random()*cHeight);
+		particles.push(particle); //加入数组
+
+		// 绘制数组中的每一个粒子
+		for (i=0; i < particles.length; i++) {
+			var particle = particles[i]; 
+			particle.render(ctx); 
+		}
+		if (particles.length>20){//只保留20个粒子
+			particles.shift();
+		}
+	}
+
+		</code></pre>
+		<p>到这里，一个基本的粒子系统就完成了，接下来就是赋予它各种运动形式和样式</p>
+		<a href="http://anchen1204.github.io/demo/spball/ball-1.html" target="_blank">demo</a>
+		<h2>二.一个粒子系统的运动</h2>
+		<p>运动实质上是xPos和yPos的位置变化，可以定义一个变化量xVel和yVel，实际上相当于给粒子一个匀速,让粒子运动起来。</p>
+		<p>如果嫌粒子颜色单一，可以补充一个花样颜色：canvas的fillStyle赋予每个粒子即可</p>
+		<pre><code>
+	function Particle(xPos,yPos){
+		this.xPos = xPos;
+		this.yPos = yPos;
+		this.yVel = 0;
+		this.xVel = 0;
+ 		...
+		this.init = function(){
+			this.yVel =  1;
+			this.xVel = Math.random()*4-2;//如果this.yVel =  1，见demo
+		}
+		this.update=function(){
+			this.yPos += this.yVel;
+			this.xPos += this.xVel;
+		}
+	}
+		</code></pre>
+		<a href="http://anchen1204.github.io/demo/spball/ball-1-2.html" target="_blank">demo</a>
+		<p>如果想要有弹性效果，可以增加一个加速度,这里给粒子加了一个向下的仿重力加速度：</p>
+		<pre><code>
+	this.yg = 0.2;
+	this.update=function(){
+		this.yVel += this.yg
+		this.yPos += this.yVel;
+		this.xPos += this.xVel;
+	}
+		</code></pre>
+		
+
+		<p>每一个粒子的初始位置都是同一个点</p>
+		<pre><code>
+	var particle = new Particle(cWidth/2,cHeight/2);
+	</code></pre>
+	<a href="http://anchen1204.github.io/demo/spball/ball-1-1.html" target="_blank">demo</a>
+	<h2>三.多种变化形式实例</h2>
+	<p>以下实例都是在上文的基础上进行改造，可以再来复习一遍一些变量的意思</p>
+	<p>
+		xPos:粒子的x坐标;<br>
+		yPos:粒子的y坐标;<br>
+		xVel:粒子的x轴变量（速度）<br>
+		yVel:粒子的y轴变量(速度)<br>
+		yg:粒子的y轴加速度
+	</p>
+	<p>根据对以上粒子相关属性的改变，可以变换多种运动形态：</p>
+	<p>1.改为每个粒子向上的高度不一致</p>
+	<pre><code>this.yVel = -parseInt(10*Math.random());</code></pre>
+	<a href="http://anchen1204.github.io/demo/spball/ball-2.html" target="_blank">demo</a>
+	<p>2.改为中心扩散方式</p>
+	<pre><code>particle.yVel =  Math.random()*10-5;</code></pre>
+	<a href="http://anchen1204.github.io/demo/spball/ball-3.html" target="_blank">demo</a>
+	<p>3.改为向上一个方向的粒子运动</p>
+	<pre><code>this.yg = -0.2;</code></pre>
+	<a href="http://anchen1204.github.io/demo/spball/ball-4.html" target="_blank">demo</a>
+	<p>4.粒子起始位置随机</p>
+	<pre><code>
+	function selectfrom (lowValue,highValue){
+		var choice=highValue-lowValue+1;
+		return Math.floor(Math.random()*choice+lowValue);
+	}
+	var particle = new Particle(selectfrom(cWidth/4,cWidth),cHeight/2);
+	</code></pre>
+	<a href="http://anchen1204.github.io/demo/spball/ball-5.html" target="_blank">demo</a>
+	<p>5.在2和4的基础上粒子无规则运动</p>
+	<pre><code>
+	var particle = new Particle(selectfrom(0,cWidth),selectfrom(cHeight/4,cHeight));
+	particle.yVel =  Math.random()*10-5;
+	</code></pre>
+	<a href="http://anchen1204.github.io/demo/spball/ball-6.html" target="_blank">demo</a>
+	<p>6.简单的伪3d效果（粒子向远处缩小）</p>
+	<a href="http://anchen1204.github.io/demo/spball/ball-10.html" target="_blank">demo</a>
+	<h2>四.基本物理碰撞一</h2>
+	<p>边界的碰撞很简单,基本原理就是检测粒子下一个位置坐标，如果超出边界，则把速度改为反方向</p>
+	<p>那么一个粒子系统的碰撞就是在这个demo上延伸为多个粒子碰撞形式。</p>
+	<pre><code>
+	this.update=function(){	
+	//碰撞检测
+		if(this.xPos < 20 || this.xPos>(cWidth-20)){
+			this.xVel = -this.xVel;
+		}
+		if(this.yPos < 20 || this.yPos >(cHeight-20)){
+			this.yVel = -this.yVel			
+		}	 
+		this.yPos += this.yVel;
+		this.xPos += this.xVel;
+	}
+	</code></pre>
+	<a href="http://anchen1204.github.io/demo/spball/ball-7.html" target="_blank">demo</a>
+	<p>结合之前讨论的粒子运动，可以变换出其他形式，如：</p>
+	<a href="http://anchen1204.github.io/demo/spball/ball-8.html" target="_blank">demo</a>
+	<h2>五.基本物理碰撞二</h2>
+	<p>上面讲的是粒子与边界的碰撞，是最简单的碰撞形式。而粒子与粒子间的碰撞则相对复杂一点。在许多动画和游戏中，都需要用到元素之间的碰撞，方法有很多，这里采用最容易理解的中心距离判别法</p>
+	<h3>中心距离判别法</h3>
+	<p>如A和B两个粒子的是否有碰撞，可以同过(xa-xb)²+(ya-yb)² = dis²计算出距离，再通过对比两粒子圆心的半径和来得出是否相撞。然后基于这个原理写每个圆与除它本身的圆做距离判断即可。</p>
+	<pre><code>
+	function collide(particleA,i){
+		for(var particleB,j=i+1;j < numPar;j++){			
+			particleB = particles[j];
+			dx = particleB.xPos- particleA.xPos ;
+			dy = particleB.yPos- particleA.yPos ;
+			dist = Math.sqrt(dx * dx + dy * dy);
+			min_dist = radius*2;
+			if(dist < min_dist){
+				particleA.xVel *= -1
+				particleA.yVel *= -1
+				particleB.xVel *= -1
+				particleB.yVel *= -1
+			}
+		}
+	}
+
+	</code></pre>
+	<a href="http://anchen1204.github.io/demo/spball/ball-9.html" target="_blank">demo</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</div>
+</body>
+</html>
