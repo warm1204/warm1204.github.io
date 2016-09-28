@@ -86,7 +86,7 @@
 
 		</code></pre>
 		<p>到这里，一个基本的粒子系统就完成了，接下来就是赋予它各种运动形式和样式</p>
-		<a href="http://anchen1204.github.io/demo/spball/ball-1.html" target="_blank">demo</a>
+		<a href="http://warm1204.github.io/spball/ball-1.html" target="_blank">demo</a>
 		<h2>二.一个粒子系统的运动</h2>
 		<p>运动实质上是xPos和yPos的位置变化，可以定义一个变化量xVel和yVel，实际上相当于给粒子一个匀速,让粒子运动起来。</p>
 		<p>如果嫌粒子颜色单一，可以补充一个花样颜色：canvas的fillStyle赋予每个粒子即可</p>
@@ -107,7 +107,7 @@
 		}
 	}
 		</code></pre>
-		<a href="http://anchen1204.github.io/demo/spball/ball-1-2.html" target="_blank">demo</a>
+		<a href="http://warm1204.github.io/spball/ball-1-2.html" target="_blank">demo</a>
 		<p>如果想要有弹性效果，可以增加一个加速度,这里给粒子加了一个向下的仿重力加速度：</p>
 		<pre><code>
 	this.yg = 0.2;
@@ -123,7 +123,7 @@
 		<pre><code>
 	var particle = new Particle(cWidth/2,cHeight/2);
 	</code></pre>
-	<a href="http://anchen1204.github.io/demo/spball/ball-1-1.html" target="_blank">demo</a>
+	<a href="http://warm1204.github.io/spball/ball-1-1.html" target="_blank">demo</a>
 	<h2>三.多种变化形式实例</h2>
 	<p>以下实例都是在上文的基础上进行改造，可以再来复习一遍一些变量的意思</p>
 	<p>
@@ -136,13 +136,13 @@
 	<p>根据对以上粒子相关属性的改变，可以变换多种运动形态：</p>
 	<p>1.改为每个粒子向上的高度不一致</p>
 	<pre><code>this.yVel = -parseInt(10*Math.random());</code></pre>
-	<a href="http://anchen1204.github.io/demo/spball/ball-2.html" target="_blank">demo</a>
+	<a href="http://warm1204.github.io/spball/ball-2.html" target="_blank">demo</a>
 	<p>2.改为中心扩散方式</p>
 	<pre><code>particle.yVel =  Math.random()*10-5;</code></pre>
-	<a href="http://anchen1204.github.io/demo/spball/ball-3.html" target="_blank">demo</a>
+	<a href="http://warm1204.github.io/spball/ball-3.html" target="_blank">demo</a>
 	<p>3.改为向上一个方向的粒子运动</p>
 	<pre><code>this.yg = -0.2;</code></pre>
-	<a href="http://anchen1204.github.io/demo/spball/ball-4.html" target="_blank">demo</a>
+	<a href="http://warm1204.github.io/spball/ball-4.html" target="_blank">demo</a>
 	<p>4.粒子起始位置随机</p>
 	<pre><code>
 	function selectfrom (lowValue,highValue){
@@ -151,15 +151,15 @@
 	}
 	var particle = new Particle(selectfrom(cWidth/4,cWidth),cHeight/2);
 	</code></pre>
-	<a href="http://anchen1204.github.io/demo/spball/ball-5.html" target="_blank">demo</a>
+	<a href="http://warm1204.github.io/spball/ball-5.html" target="_blank">demo</a>
 	<p>5.在2和4的基础上粒子无规则运动</p>
 	<pre><code>
 	var particle = new Particle(selectfrom(0,cWidth),selectfrom(cHeight/4,cHeight));
 	particle.yVel =  Math.random()*10-5;
 	</code></pre>
-	<a href="http://anchen1204.github.io/demo/spball/ball-6.html" target="_blank">demo</a>
+	<a href="http://warm1204.github.io/spball/ball-6.html" target="_blank">demo</a>
 	<p>6.简单的伪3d效果（粒子向远处缩小）</p>
-	<a href="http://anchen1204.github.io/demo/spball/ball-10.html" target="_blank">demo</a>
+	<a href="http://warm1204.github.io/spball/ball-10.html" target="_blank">demo</a>
 	<h2>四.基本物理碰撞一</h2>
 	<p>边界的碰撞很简单,基本原理就是检测粒子下一个位置坐标，如果超出边界，则把速度改为反方向</p>
 	<p>那么一个粒子系统的碰撞就是在这个demo上延伸为多个粒子碰撞形式。</p>
@@ -176,9 +176,9 @@
 		this.xPos += this.xVel;
 	}
 	</code></pre>
-	<a href="http://anchen1204.github.io/demo/spball/ball-7.html" target="_blank">demo</a>
+	<a href="http://warm1204.github.io/spball/ball-7.html" target="_blank">demo</a>
 	<p>结合之前讨论的粒子运动，可以变换出其他形式，如：</p>
-	<a href="http://anchen1204.github.io/demo/spball/ball-8.html" target="_blank">demo</a>
+	<a href="http://warm1204.github.io/spball/ball-8.html" target="_blank">demo</a>
 	<h2>五.基本物理碰撞二</h2>
 	<p>上面讲的是粒子与边界的碰撞，是最简单的碰撞形式。而粒子与粒子间的碰撞则相对复杂一点。在许多动画和游戏中，都需要用到元素之间的碰撞，方法有很多，这里采用最容易理解的中心距离判别法</p>
 	<h3>中心距离判别法</h3>
@@ -201,7 +201,7 @@
 	}
 
 	</code></pre>
-	<a href="http://anchen1204.github.io/demo/spball/ball-9.html" target="_blank">demo</a>
+	<a href="http://warm1204.github.io/spball/ball-9.html" target="_blank">demo</a>
 
 
 
