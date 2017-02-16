@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>demo</title>
+	  <script type="text/javascript" src="https://cdn.wilddog.com/sdk/js/2.0.0/wilddog-sync.js"></script>
+  <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+</head>
+<body>
+<canvas id="myCanvas" width="600" height="600" style="border:1px solid #c3c3c3;"></canvas>
+
+	<script type="text/javascript">
+var leftIsDown = 0,
+    rightIsDown = 0,
+    topIsDown = 0,
+    downIsDown = 0;
+var config = {
+syncURL: "https://ansnake.wilddogio.com"
+}
+wilddog.initializeApp(config);
+var ref = wilddog.sync().ref();
+ref.on("value", function(snapshot) {
+    leftIsDown = snapshot.val().leftIsDown;
+    rightIsDown = snapshot.val().rightIsDown;
+    topIsDown = snapshot.val().topIsDown;
+    downIsDown = snapshot.val().downIsDown;
+
+});
+
+var c=document.getElementById("myCanvas");
+var time = 160 ; //蛇的速度
+var cxt=c.getContext("2d");
+var x = y = 8;
+var a = 0; //食物坐标
+var t = 20; //蛇身长
+var map = []; //记录蛇运行路径
+var size = 8; //蛇身单元大小
+var direction = 2; // 1 向上 2 向右 0 左 3下
+	interval = window.setInterval(set_game_speed, time); // 移动蛇
+
+function set_game_speed(){ // 移动蛇
+	update();
+switch(direction){
+case 1:y = y-size;break;
+case 2:x = x+size;break;
+case 0:x = x-size;break;
+case 3:y = y+size;break;
+}
+if(x>600 || y>600 || x<0 || y<0){
+alert("你挂了，继续努力吧!失败原因：碰壁了.....");window.location.reload();
+}
+for(var i=0;i<map.length;i++){
+if( parseInt(map[i].x)==x && parseInt(map[i].y)==y){
+alert("你挂了，继续努力吧！失败原因：撞到自己了.....");window.location.reload();
+}
+}
+if (map.length>t) { //保持蛇身长度
+var cl = map.shift(); //删除数组第一项，并且返回原元素
+cxt.clearRect(cl['x'], cl['y'], size, size);
+};
+map.push({'x':x,'y':y}); //将数据添加到原数组尾部
+cxt.fillStyle = "#006699";//内部填充颜色
+cxt.strokeStyle = "#006699";//边框颜色
+cxt.fillRect(x, y, size, size);//绘制矩形
+if((a*8)==x && (a*8)==y){ //吃食物
+rand_frog();t++;
+
+}
+}
+
+//改变蛇的方向
+function update(){
+if(leftIsDown){
+	direction = 0;//左
+}else if(rightIsDown){
+	direction = 2;//右
+
+}else if(topIsDown){
+	direction = 1;//上
+
+}else if(downIsDown ){
+	direction = 3;//下
+
+}
+}
+
+// 随机放置食物
+function rand_frog(){
+a = Math.ceil(Math.random()*50);
+cxt.fillStyle = "#000000";//内部填充颜色
+cxt.strokeStyle = "#000000";//边框颜色
+cxt.fillRect(a*8, a*8, 8, 8);//绘制矩形
+}
+// 随机放置食物
+rand_frog();
+</script>
+<script>
+
+
+
+</script>
+</body>
+</html>

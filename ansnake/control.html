@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+
+	<title>btn</title>
+
+    <style>
+		* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;
+}
+
+.control {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+.btnL ,.btnT,.btnD,.btnR{
+	width: 30%;
+	height: 30%; 
+	position: absolute;
+	line-height: 2;
+	background: #eee;
+
+}
+.btnT{
+
+    top: 0;
+    left: 50%;
+    margin-left: -15%;
+
+}
+.btnL {
+   
+    top: 35%;
+    left: 0;
+
+}
+.btnD{
+
+    bottom: 0;
+    left: 50%;
+    margin-left: -15%;
+
+}
+.btnR {
+    
+
+    right: 0;
+    top: 35%;
+
+}
+
+    </style>
+</head>
+<body>
+	<div class="control">
+		<span class="btnT" id="btnT"> Top </span>
+		<span class="btnL" id="btnL"> Left </span>
+		<span class="btnD" id="btnD"> Down </span>
+		<span class="btnR" id="btnR"> Right </span>
+	</div>
+
+	<script src="https://cdn.wilddog.com/sdk/js/2.5.1/wilddog.js"></script>
+	<script>
+		var config = {
+			syncURL: "https://ansnake.wilddogio.com"
+		}
+		wilddog.initializeApp(config);
+		var ref = wilddog.sync().ref();
+
+		var btnLeft = document.getElementById('btnL'),
+			btnRight = document.getElementById('btnR'),
+			btnTop = document.getElementById('btnT'),
+			btnDown = document.getElementById('btnD');
+
+		btnLeft.addEventListener('touchstart', function(){
+        		ref.update({
+            		'leftIsDown': 1,
+    				'rightIsDown': 0,
+    				'topIsDown' : 0,
+    				'downIsDown': 0
+        		})
+    		}, false)
+		btnRight.addEventListener('touchstart', function(){
+        		ref.update({
+            		'leftIsDown': 0,
+    				'rightIsDown': 1,
+    				'topIsDown' : 0,
+    				'downIsDown': 0
+        		})
+    		}, false)
+		btnTop.addEventListener('touchstart', function(){
+        		ref.update({
+            		'leftIsDown': 0,
+    				'rightIsDown': 0,
+    				'topIsDown' : 1,
+    				'downIsDown': 0
+        		})
+    		}, false)
+		btnDown.addEventListener('touchstart', function(){
+        		ref.update({
+            		'leftIsDown': 0,
+    				'rightIsDown': 0,
+    				'topIsDown' : 0,
+    				'downIsDown': 1
+        		})
+    		}, false)
+
+	</script>
+</body>
+</html>
