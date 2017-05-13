@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>seed-jquery-mob</title>
+    <meta name="keywords" content="seed-jquery-mob">
+    <meta name="description" content="seed-jquery-mob">
+    <meta name="format-detection" content="telephone=no, email=no">
+    <meta name="applicable-device" content="mobile">
+    <link rel="dns-prefetch" href="//res.yy.com">
+    <link rel="dns-prefetch" href="//page.yy.com">
+    <link rel="dns-prefetch" href="//makefriends.bs2.yy.com">
+    <link rel="dns-prefetch" href="//makefriends.bs2dl.yy.com">
+    <script>!function(e,t){function i(){var t=n.getBoundingClientRect().width;t/m>540&&(t=540*m);var i=t/10;n.style.fontSize=i+"px",d.rem=e.rem=i}var a,r=e.document,n=r.documentElement,o=r.querySelector('meta[name="viewport"]'),l=r.querySelector('meta[name="flexible"]'),m=0,s=0,d=t.flexible||(t.flexible={});if(o){console.warn("将根据已有的meta标签来设置缩放比例");var p=o.getAttribute("content").match(/initial\-scale=([\d\.]+)/);p&&(s=parseFloat(p[1]),m=parseInt(1/s))}else if(l){var c=l.getAttribute("content");if(c){var u=c.match(/initial\-dpr=([\d\.]+)/),f=c.match(/maximum\-dpr=([\d\.]+)/);u&&(m=parseFloat(u[1]),s=parseFloat((1/m).toFixed(2))),f&&(m=parseFloat(f[1]),s=parseFloat((1/m).toFixed(2)))}}if(!m&&!s){var v=(e.navigator.appVersion.match(/android/gi),e.navigator.appVersion.match(/iphone/gi)),h=e.devicePixelRatio;m=v?h>=3&&(!m||m>=3)?3:h>=2&&(!m||m>=2)?2:1:1,s=1/m}if(n.setAttribute("data-dpr",m),!o)if(o=r.createElement("meta"),o.setAttribute("name","viewport"),o.setAttribute("content","initial-scale="+s+", maximum-scale="+s+", minimum-scale="+s+', user-scalable=no, shrink-to-fit=no"'),n.firstElementChild)n.firstElementChild.appendChild(o);else{var x=r.createElement("div");x.appendChild(o),r.write(x.innerHTML)}e.addEventListener("resize",function(){clearTimeout(a),a=setTimeout(i,300)},!1),e.addEventListener("pageshow",function(e){e.persisted&&(clearTimeout(a),a=setTimeout(i,300))},!1),"complete"===r.readyState?r.body.style.fontSize=12*m+"px":r.addEventListener("DOMContentLoaded",function(e){r.body.style.fontSize=12*m+"px"},!1),i(),d.dpr=e.dpr=m,d.refreshRem=i,d.rem2px=function(e){var t=parseFloat(e)*this.rem;return"string"==typeof e&&e.match(/rem$/)&&(t+="px"),t},d.px2rem=function(e){var t=parseFloat(e)/this.rem;return"string"==typeof e&&e.match(/px$/)&&(t+="rem"),t}}(window,window.lib||(window.lib={}))</script>
+    <link rel="stylesheet" href="./assets/css/index.ce4573da.css">
+</head>
+<body>
+<div id="pageContain">
+  <section class="page onload" id="page1">
+    <div class="content1">
+      <div class="main">
+        <div class="header"></div>
+        <div class="download"></div>
+        <div class="phone"></div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="page" id="page2">
+  <div class="content2">
+     <div class="main">
+	     <div class="header"></div>
+       <div class="cov"></div>
+	 </div>
+   </div>
+  </section>
+  <section class="page" id="page3">
+   <div class="content3">
+    <div class="main">
+    	<div class="header"></div>
+    </div>
+    </div>
+  </section>
+  <section class="page" id="page4">
+     <div class="content4">
+    <div class="main">
+	   <div class="header"></div>
+	</div>
+  </div>
+  </section>
+
+
+</div>
+<div class="mask lock flex flex-v flex-align-center flex-pack-center">
+    <div class="lock-bg">
+    </div>
+    <p class="lock-txt">
+        为了更好的体验，请使用竖屏浏览
+    </p>
+</div>
+ <div class="aside">
+    <div class="arrow"></div>
+</div>
+
+<script src="http://res.yy.com/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="./assets/js/index.e873990a.js"></script>
+</body>
+</html>
