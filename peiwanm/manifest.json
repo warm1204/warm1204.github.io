@@ -1,6 +1,7 @@
 {
   "index.html": "index.html",
   "assets/css/index.css": "assets/css/index.ce4573da.css",
+  "assets/js/index.js": "assets/js/index.c9ae15ee.js",
   "assets/img/arrow.png": "assets/img/arrow.a0b88e8d.png",
   "assets/img/bg1.jpg": "assets/img/bg1.243899c7.jpg",
   "assets/img/bg2.jpg": "assets/img/bg2.2cf02cca.jpg",
@@ -18,6 +19,5 @@
   "assets/img/title.png": "assets/img/title.b2a55b9d.png",
   "assets/img/title2.jpg": "assets/img/title2.36e3f454.jpg",
   "assets/img/title3.jpg": "assets/img/title3.2193c979.jpg",
-  "assets/img/title4.jpg": "assets/img/title4.bcdb051b.jpg",
-  "assets/js/index.js": "assets/js/index.e873990a.js"
+  "assets/img/title4.jpg": "assets/img/title4.bcdb051b.jpg"
 }
