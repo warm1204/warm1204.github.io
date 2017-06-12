@@ -101,11 +101,12 @@
     }
 })*/
 //判断微信浏览器
-function weixinTip(ele){
+function weixinTip(){
   var ua = navigator.userAgent;
   var isWeixin = !!/MicroMessenger/i.test(ua);
+  var btn = document.getElementById('JdownApp');//下载一
   if(isWeixin){
-    ele.onclick=function(e){
+    btn.onclick=function(e){
       window.event? window.event.returnValue = false : e.preventDefault();
       document.getElementById('JweixinTip').style.display='block';
     }
@@ -114,8 +115,8 @@ function weixinTip(ele){
     }
   }
 }
-var btn = document.getElementById('JdownApp');//下载一
-weixinTip(btn);
+weixinTip();
+
 </script>
 </body>
 </html>
